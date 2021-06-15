@@ -1,0 +1,29 @@
+.card {
+  border-radius: 8px;
+  background-color: #1e2139;
+
+  .theme--light & {
+    color: #0c0e16;
+    background-color: white;
+  }
+}
+
+.status {
+  &--paid {
+    color: #33d69f;
+    background-color: hsla(160, 67%, 52%, 0.06);
+  }
+  &--pending {
+    color: #ff8f00;
+    background-color: rgba(255, 145, 0, 0.06);
+  }
+  &--draft {
+    color: #373b53;
+    background-color: hsla(231, 20%, 27%, 0.06);
+
+    .theme--dark & {
+      color: #dfe3fa;
+      background-color: hsla(231, 73%, 93%, 0.06);
+    }
+  }
+}

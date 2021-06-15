@@ -6,7 +6,14 @@
     </div>
     <div class="header_right">
       <h4 class="filter">Filter</h4>
-      <v-btn icon elevation="0" x-small plain class="arrow-down">
+      <v-btn
+        icon
+        color="transparent"
+        elevation="0"
+        x-small
+        plain
+        class="arrow-down"
+      >
         <inline-svg :src="getImageUrl('icon-arrow-down.svg')"></inline-svg>
       </v-btn>
       <div class="add">
@@ -32,6 +39,20 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .theme--light & {
+    .header_right {
+      li {
+        color: white;
+      }
+    }
+
+    .invoices_amount {
+      color: #888eb0;
+
+      font-weight: normal;
+    }
+  }
 }
 .header_left {
   .invoices_title {

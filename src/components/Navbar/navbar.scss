@@ -42,10 +42,11 @@
     }
   }
   .left {
-    position: relative;
     width: 72px;
     height: 100%;
     display: flex;
+    cursor: pointer;
+    position: relative;
     align-items: center !important;
     justify-content: center;
     background-color: #7c5dfa;

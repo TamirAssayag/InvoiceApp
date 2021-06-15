@@ -1,43 +1,29 @@
 <template>
   <div class="cards">
-    <div class="invoices_card" v-for="data in myJson" :key="data.id">
+    <div
+      class="invoices_card"
+      v-for="data in myJson"
+      :key="data.id"
+      @click="directToInvoice(data.id)"
+    >
       <div class="invoices_card--info">
-        <li class="sku-number">#{{ data.id }}</li>
+        <li class="sku-number">
+          <ul id="hashtag">
+            #
+          </ul>
+          {{ data.id }}
+        </li>
         <li class="addressee">{{ data.clientName }}</li>
       </div>
       <div class="invoices_card--info--bottom">
         <div class="invoices_information">
-          <li class="due-date">Due {{ data.paymentDue }}</li>
+          <li class="due-date">Due {{ getDate(data.paymentDue) }}</li>
           <li class="fee">
             £
             {{ data.total.toLocaleString("en", { minimumFractionDigits: 2 }) }}
           </li>
         </div>
-        <div class="invoices_status">
-          <div class="status">
-            <div
-              class="status-dot"
-              :style="[
-                data.status === 'paid'
-                  ? { backgroundColor: statusColor[0] }
-                  : data.status === 'pending'
-                  ? { backgroundColor: statusColor[1] }
-                  : { backgroundColor: statusColor[2] },
-              ]"
-            ></div>
-            <li
-              :style="[
-                data.status === 'paid'
-                  ? { color: statusColor[0] }
-                  : data.status === 'pending'
-                  ? { color: statusColor[1] }
-                  : { color: statusColor[2] },
-              ]"
-            >
-              {{ data.status }}
-            </li>
-          </div>
-        </div>
+        <InvoiceStatus :data="data.status" />
       </div>
     </div>
   </div>
@@ -45,12 +31,19 @@
 
 <script>
 import data from "../../json/data.json";
+import InvoiceStatus from "./InvoiceStatus.vue";
 
 export default {
+  components: { InvoiceStatus },
   data: () => ({
     myJson: data,
-    statusColor: ["#33d69f", "#ff8f00", "#dfe3fa"],
   }),
+
+  methods: {
+    directToInvoice(id) {
+      this.$router.push({ name: "sku", params: { id } });
+    },
+  },
 };
 </script>
 
@@ -67,13 +60,41 @@ export default {
     box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
     background-color: #1e2139;
     padding: 1.5rem 1.5rem 0;
+    cursor: pointer;
+
+    .theme--light & {
+      background-color: #ffffff;
+
+      &--info {
+        .sku-number {
+          #hashtag {
+            color: #7e88c3;
+          }
+        }
+        .addressee {
+          color: #858bb2;
+        }
+        &--bottom {
+          .due-date {
+            color: #7e88c3;
+          }
+        }
+      }
+    }
 
     &--info {
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.8rem;
 
-      .sku-number,
+      .sku-number {
+        display: flex;
+        font-size: 12px;
+        font-size: 12px;
+        line-height: 1.25;
+        letter-spacing: -0.25px;
+        font-weight: bold;
+      }
       .addressee {
         font-size: 12px;
         line-height: 1.25;
@@ -97,49 +118,9 @@ export default {
       .fee {
         font-size: 16px;
         font-weight: 600;
-        font-stretch: normal;
-        font-style: normal;
+        font-weight: bold;
         line-height: 1.5;
         letter-spacing: -0.8px;
-      }
-
-      .invoices_status {
-        z-index: 500;
-        .status {
-          width: 104px;
-          height: 40px;
-          display: flex;
-          position: relative;
-          justify-content: center;
-          align-items: center;
-          font-size: 12px;
-          line-height: 1.25;
-          letter-spacing: -0.25px;
-          // color: #33d69f;
-          font-weight: bold;
-          gap: 0.5rem;
-          text-transform: capitalize;
-
-          &:after {
-            width: 100%;
-            height: 100%;
-            content: "";
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 6px;
-            background-color: #33d69f;
-            opacity: 0.06;
-            z-index: 600;
-          }
-        }
-        .status-dot {
-          width: 8px;
-          height: 8px;
-          background-color: #33d69f;
-          border-radius: 50%;
-        }
       }
     }
   }

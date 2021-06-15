@@ -9,7 +9,11 @@ Vue.component("inline-svg", InlineSvg);
 
 // Mixins
 import ImageUrlMixin from "./mixins/ImageUrlMixin";
+import getRoute from "./mixins/getRoute";
+import getDate from "./mixins/getDate";
 Vue.mixin(ImageUrlMixin);
+Vue.mixin(getRoute);
+Vue.mixin(getDate);
 
 Vue.config.productionTip = false;
 

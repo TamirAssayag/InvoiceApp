@@ -1,41 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;300;500;600;700&display=swap");
 
 .v-application {
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
   font-family: "Spartan", sans-serif !important;
+
   &.theme--dark {
     color: #ffffff !important;
     background-color: #141625 !important;
   }
-}
-
-.theme--dark {
-  &.v-application {
-    color: #ffffff !important;
-    background-color: #141625 !important;
+  &.theme--light {
+    color: #0c0e16 !important;
+    background-color: #f8f8fb !important;
   }
-}
 
-.theme--light.v-application {
-  .invoices_card {
-    color: white !important;
+  ul,
+  ol {
+    padding-left: 0 !important;
   }
-  .invoices_header {
-    .header_right {
-      li {
-        color: white;
-      }
-    }
 
-    .invoices_amount {
-      color: #141625;
-      font-weight: normal;
-    }
+  p {
+    margin: 0 !important;
   }
-}
-
-.v-application ul,
-.v-application ol {
-  padding-left: 0 !important;
 }
 
 li {

@@ -2,7 +2,7 @@
   <div class="navbar">
     <v-app-bar color="navbar" flat dark>
       <ul class="navbar--items">
-        <div class="left">
+        <div class="left" @click="getRoute('')">
           <inline-svg class="logo" :src="getImageUrl('logo.svg')"></inline-svg>
         </div>
         <div class="right">

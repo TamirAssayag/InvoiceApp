@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Invoice from "../views/Invoice.vue";
 
 Vue.use(VueRouter);
 
@@ -11,13 +12,17 @@ const routes = [
     component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/invoice/",
+    name: "invoice",
+    children: [
+      {
+        path: ":id",
+        name: "sku",
+        component: { Invoice },
+      },
+    ],
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "Invoice" */ "@/views/Invoice.vue"),
   },
 ];
 
@@ -25,6 +30,10 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  scrollBehavior() {
+    // https://stackoverflow.com/questions/50449123/vue-js-scroll-to-top-of-page-for-same-route
+    window.scrollTo(0, 0);
+  },
 });
 
 export default router;
