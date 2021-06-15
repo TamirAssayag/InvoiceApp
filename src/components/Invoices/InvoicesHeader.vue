@@ -29,8 +29,12 @@
 </template>
 
 <script>
+// import data from "./../../json/data.json";
 export default {
   name: "Invoices",
+  // data: () => ({
+  //   myJson: data,
+  // }),
 };
 </script>
 
@@ -57,9 +61,9 @@ export default {
 .header_left {
   .invoices_title {
     font-size: 20px;
-    margin: 0 0 -1px;
     font-weight: bold;
     letter-spacing: -0.63px;
+    margin-top: -4px;
   }
   .invoices_amount {
     font-size: 12px;
@@ -80,11 +84,12 @@ export default {
     font-weight: bold;
     line-height: 1.25;
     letter-spacing: -0.25px;
+    margin-bottom: -4px;
   }
 
   .arrow-down {
-    align-self: center;
     margin-right: 5px;
+    margin-bottom: -4px;
   }
 
   .add {
@@ -104,6 +109,7 @@ export default {
       line-height: 1.25;
       letter-spacing: -0.25px;
       padding: 0 0rem 0 0.4rem !important;
+      margin-top: 0.5rem;
     }
 
     .plus {

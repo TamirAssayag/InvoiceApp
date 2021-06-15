@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 .invoices {
-  margin-top: 1.8rem;
+  margin-top: 1.5rem;
   padding: 0 1.5rem;
 
   .container {

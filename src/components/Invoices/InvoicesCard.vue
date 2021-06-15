@@ -52,7 +52,7 @@ export default {
   display: grid;
   place-items: center;
   gap: 1rem;
-  margin: 1rem 0;
+  margin: 1.1rem 0;
   .invoices_card {
     width: 327px;
     min-height: 134px;
