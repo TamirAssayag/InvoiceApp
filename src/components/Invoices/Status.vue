@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "InvoiceStatus",
+  name: "Status",
   props: {
     data: String,
   },

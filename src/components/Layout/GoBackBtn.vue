@@ -15,7 +15,7 @@ export default {
 @import "@/styles/import";
 
 .v-dialog--fullscreen {
-  @include media(">md") {
+  @include media(">lg") {
     .goback {
       display: none;
     }

@@ -6,7 +6,7 @@ export default {
       setTimeout(() => this.$router.go(-1), 160);
     },
     addDays(date, days) {
-      var result = new Date(date);
+      const result = new Date(date);
       result.setDate(result.getDate() + days);
       return result;
     },

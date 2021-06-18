@@ -8,7 +8,7 @@
           <div class="status__card card">
             <span id="card__title">Status</span>
             <div id="status">
-              <InvoiceStatus :data="invoice.status" />
+              <Status :data="invoice.status" />
             </div>
           </div>
 
@@ -40,7 +40,9 @@
                   <p class="invoice__header">Payment Due</p>
                   <h3 id="date">
                     {{
-                      getDate(addDays(invoice.createdAt, invoice.paymentTerms))
+                      (invoice.paymentDue = getDate(
+                        addDays(invoice.createdAt, invoice.paymentTerms)
+                      ))
                     }}
                   </h3>
                 </div>
@@ -95,7 +97,7 @@
         </div>
       </div>
 
-      <InvoiceButtons>
+      <Buttons>
         <v-btn elevation="0" color="#252945" rounded @click="editInvoice"
           >Edit</v-btn
         >
@@ -111,7 +113,7 @@
           @click="markAsPaid()"
           >Mark As Paid</v-btn
         >
-      </InvoiceButtons>
+      </Buttons>
 
       <Modal
         v-model="dialog"
@@ -129,13 +131,13 @@
 
 <script>
 import "../styles/invoice.scss";
-import InvoiceStatus from "../components/Invoices/InvoiceStatus.vue";
-import InvoiceButtons from "../components/Invoices/InvoiceButtons.vue";
+import Status from "../components/Invoices/Status.vue";
 import GoBackBtn from "../components/Layout/GoBackBtn.vue";
 import { mapActions } from "vuex";
 import Modal from "../components/Layout/Modal.vue";
+import Buttons from "../components/Invoices/Buttons.vue";
 export default {
-  components: { InvoiceStatus, InvoiceButtons, GoBackBtn, Modal },
+  components: { Status, GoBackBtn, Modal, Buttons },
   name: "Invoice",
   data: () => ({
     dialog: false,

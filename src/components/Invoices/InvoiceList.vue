@@ -26,7 +26,7 @@
               {{ (invoice.total = getTwoDigits(getGrandTotal(invoice.items))) }}
             </li>
           </div>
-          <InvoiceStatus :data="invoice.status" />
+          <Status :data="invoice.status" />
         </div>
       </div>
     </template>
@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import InvoiceStatus from "./InvoiceStatus.vue";
+import Status from "./Status.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  components: { InvoiceStatus },
+  components: { Status },
   data: () => ({}),
 
   computed: {

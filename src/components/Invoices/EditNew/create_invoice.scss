@@ -1,4 +1,4 @@
-.edit {
+.createInvoice {
   .theme--light & {
     background-color: white !important;
   }
@@ -6,7 +6,6 @@
     padding: 0 1.5rem;
 
     @media screen and (min-width: 768px) {
-      padding: 0 56px;
       margin-top: 1.5rem;
     }
 
@@ -61,7 +60,7 @@
   }
 }
 
-.edit--form,
+.createInvoice--form,
 .item--list__form {
   width: 100%;
   display: flex;

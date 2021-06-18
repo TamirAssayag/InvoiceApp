@@ -17,7 +17,7 @@ const routes = [
         name: "sku-new",
         component: () =>
           import(
-            /* webpackChunkName: "invoiceEdit" */ "@/components/Invoices/Edit/EditInvoice.vue"
+            /* webpackChunkName: "CreateInvoice" */ "@/components/Invoices/EditNew/CreateInvoice.vue"
           ),
       },
     ],
@@ -39,7 +39,7 @@ const routes = [
             name: "sku-edit",
             component: () =>
               import(
-                /* webpackChunkName: "invoiceEdit" */ "@/components/Invoices/Edit/EditInvoice.vue"
+                /* webpackChunkName: "CreateInvoice" */ "@/components/Invoices/EditNew/CreateInvoice.vue"
               ),
           },
         ],

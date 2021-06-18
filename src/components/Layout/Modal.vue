@@ -12,7 +12,7 @@
           <v-card-title> {{ title }} </v-card-title>
           <p class="modal-text"><slot /></p>
         </v-card-text>
-        <InvoiceButtons class="modal-buttons">
+        <Buttons class="modal-buttons">
           <v-btn
             elevation="0"
             color="#252945"
@@ -29,16 +29,16 @@
             class="action"
             >{{ action }}</v-btn
           >
-        </InvoiceButtons>
+        </Buttons>
       </v-card>
     </v-dialog>
   </div>
 </template>
 
 <script>
-import InvoiceButtons from "../Invoices/InvoiceButtons.vue";
+import Buttons from "../Invoices/Buttons.vue";
 export default {
-  components: { InvoiceButtons },
+  components: { Buttons },
   name: "Modal",
   props: {
     value: Boolean,
