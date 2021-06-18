@@ -26,9 +26,19 @@ new Vue({
     const theme = JSON.parse(localStorage.getItem("theme"));
     if (localStorage.getItem("theme")) {
       this.$vuetify.theme.dark = theme;
+    } else if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      this.$vuetify.theme.dark = true;
     } else {
       this.$vuetify.theme.dark = false;
     }
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        this.$vuetify.theme.dark = e.matches ? true : false;
+      });
   },
 
   watch: {
