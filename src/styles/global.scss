@@ -236,3 +236,7 @@ input {
   white-space: nowrap;
   overflow: hidden;
 }
+
+#no-background-hover::before {
+  background-color: transparent !important;
+}

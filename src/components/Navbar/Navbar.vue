@@ -6,7 +6,15 @@
           <inline-svg class="logo" :src="getImageUrl('logo.svg')"></inline-svg>
         </div>
         <div class="right">
-          <v-btn icon small dark plain @click="toggleDarkMode">
+          <v-btn
+            id="no-background-hover"
+            icon
+            small
+            dark
+            plain
+            @click="toggleDarkMode"
+            color="transparent"
+          >
             <inline-svg
               :src="getImageUrl(toggleModeIcon)"
               :title="toggleModeTitle"

@@ -60,9 +60,6 @@ export default {
     margin-bottom: -4px;
   }
 }
-#no-background-hover::before {
-  background-color: transparent !important;
-}
 
 #arrow-down {
   width: 100%;
