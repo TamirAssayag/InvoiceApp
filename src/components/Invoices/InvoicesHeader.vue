@@ -2,22 +2,22 @@
   <header class="invoices_header">
     <div class="header_left">
       <h3 class="invoices_title">Invoices</h3>
-      <p class="invoices_amount">7 invoices</p>
+      <p class="invoices_amount">
+        {{
+          invoicesByFilter.length
+            ? `${invoicesByFilter.length} invoices`
+            : `No ${filter !== "all" ? filter : ""} Invoices`
+        }}
+      </p>
     </div>
     <div class="header_right">
-      <h4 class="filter">Filter</h4>
-      <v-btn
-        icon
-        color="transparent"
-        elevation="0"
-        x-small
-        plain
-        class="arrow-down"
-      >
-        <inline-svg :src="getImageUrl('icon-arrow-down.svg')"></inline-svg>
-      </v-btn>
+      <FilterByStatus />
       <div class="add">
-        <v-btn elevation="0" class="new_invoice">
+        <v-btn
+          elevation="0"
+          class="new_invoice"
+          @click="$router.push({ name: 'sku-new' })"
+        >
           <li>New</li>
           <li icon class="plus">
             <inline-svg :src="getImageUrl('icon-plus.svg')"></inline-svg>
@@ -29,12 +29,18 @@
 </template>
 
 <script>
-// import data from "./../../json/data.json";
+import { mapGetters } from "vuex";
+import FilterByStatus from "../Layout/FilterByStatus.vue";
 export default {
+  components: { FilterByStatus },
   name: "Invoices",
-  // data: () => ({
-  //   myJson: data,
-  // }),
+  data: () => ({}),
+  computed: {
+    ...mapGetters({
+      invoicesByFilter: "invoices/invoicesByFilter",
+      filter: "invoices/getFilter",
+    }),
+  },
 };
 </script>
 

@@ -6,24 +6,11 @@
           <inline-svg class="logo" :src="getImageUrl('logo.svg')"></inline-svg>
         </div>
         <div class="right">
-          <v-btn
-            v-if="!$vuetify.theme.dark"
-            icon
-            small
-            dark
-            plain
-            @click="toggleDarkMode"
-          >
+          <v-btn icon small dark plain @click="toggleDarkMode">
             <inline-svg
-              :src="getImageUrl('icon-moon.svg')"
+              :src="getImageUrl(toggleModeIcon)"
               :title="toggleModeTitle"
-            ></inline-svg>
-          </v-btn>
-          <v-btn v-else icon small dark plain @click="toggleDarkMode">
-            <inline-svg
-              :src="getImageUrl('icon-sun.svg')"
-              :title="toggleModeTitle"
-            ></inline-svg>
+            />
           </v-btn>
           <v-divider vertical />
           <img class="user_avatar" :src="getImageUrl('image-avatar.jpg')" />
@@ -45,10 +32,13 @@ export default {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     },
   },
-
   computed: {
     toggleModeTitle() {
       return !this.$vuetify.theme.dark ? this.mode[0] : this.mode[1];
+    },
+
+    toggleModeIcon() {
+      return !this.$vuetify.theme.dark ? "icon-moon.svg" : "icon-sun.svg";
     },
   },
 };

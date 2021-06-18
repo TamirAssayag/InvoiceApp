@@ -1,0 +1,117 @@
+<template>
+  <div class="modal">
+    <v-dialog
+      :value="value"
+      overlay-opacity="0.45"
+      overlay-color="#000"
+      content-class="modal-dialog"
+      @click:outside="$emit('onClose')"
+    >
+      <v-card>
+        <v-card-text>
+          <v-card-title> {{ title }} </v-card-title>
+          <p class="modal-text"><slot /></p>
+        </v-card-text>
+        <InvoiceButtons class="modal-buttons">
+          <v-btn
+            elevation="0"
+            color="#252945"
+            rounded
+            class="cancel"
+            @click="$emit('onClose')"
+            >Cancel</v-btn
+          >
+          <v-btn
+            elevation="0"
+            color="#ec5757"
+            rounded
+            @click="$emit('onAction')"
+            class="action"
+            >{{ action }}</v-btn
+          >
+        </InvoiceButtons>
+      </v-card>
+    </v-dialog>
+  </div>
+</template>
+
+<script>
+import InvoiceButtons from "../Invoices/InvoiceButtons.vue";
+export default {
+  components: { InvoiceButtons },
+  name: "Modal",
+  props: {
+    value: Boolean,
+    title: String,
+    action: String,
+  },
+};
+</script>
+
+<style lang="scss">
+.modal {
+  &-dialog {
+    padding: 0 0 !important;
+    width: 327px !important;
+    overflow: hidden !important;
+    border-radius: 8px !important;
+    .v-card {
+      padding: 32px 0 !important;
+      background-color: #1e2139 !important;
+      max-height: 220px !important;
+
+      .theme--light & {
+        background-color: white !important;
+      }
+
+      &__title {
+        padding: 0 0 8px !important;
+        font-weight: bold;
+        line-height: 1.6;
+        letter-spacing: -0.42px;
+        color: #ffffff;
+
+        .theme--light & {
+          color: #0c0e16 !important;
+        }
+      }
+    }
+  }
+  &-text {
+    font-family: Spartan;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.83;
+    letter-spacing: -0.25px;
+    color: #888eb0;
+
+    .theme--light & {
+      color: #7e88c3;
+    }
+  }
+
+  &-buttons {
+    background-color: unset !important;
+    height: unset;
+    width: 100% !important;
+    margin-left: auto;
+    margin-bottom: 1rem;
+    box-shadow: unset !important;
+
+    .invoice--buttons__wrapper {
+      padding: 0 !important;
+    }
+
+    .invoice--buttons {
+      justify-content: flex-end !important;
+      padding: 0 32px !important;
+    }
+
+    .cancel,
+    .action {
+      width: 91px !important;
+      height: 48px !important;
+    }
+  }
+}
+</style>

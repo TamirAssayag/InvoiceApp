@@ -1,0 +1,148 @@
+.edit {
+  .theme--light & {
+    background-color: white !important;
+  }
+  &--wrapper {
+    padding: 0 1.5rem;
+
+    .item--list {
+      min-height: 248px;
+
+      &__title {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 1.78;
+        color: #777f98;
+        // margin: 4.2rem 0 1.5rem;
+      }
+
+      &__form {
+        display: flex;
+        text-align: left;
+        flex-direction: column;
+      }
+    }
+
+    .bill--form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .from,
+      .to {
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.25;
+        letter-spacing: -0.25px;
+        color: #7c5dfa;
+        align-self: flex-start;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  &--title {
+    margin-bottom: 1.5rem;
+    h2 {
+      display: flex;
+    }
+  }
+}
+
+.edit--form,
+.item--list__form {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.5rem;
+
+  label {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.25px;
+    color: #888eb0;
+
+    .theme--light & {
+      color: #7e88c3;
+    }
+  }
+
+  input,
+  select {
+    margin: 0.5rem 0;
+    width: 100% !important;
+    color: white;
+    font-size: 16px;
+    height: 48px;
+
+    &:nth-child(5) {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .input--flex {
+    width: 100%;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.43rem;
+    align-items: center;
+    .input-row,
+    .input-column {
+      display: flex;
+      flex-direction: column;
+
+      #item-price {
+        width: 110px;
+      }
+
+      #quantity {
+        width: 64px;
+      }
+
+      .item-total-price {
+        font-size: 12px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: -0.25px;
+        color: #888eb0;
+        margin-top: 1rem;
+      }
+
+      .trash-icon {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+}
+.date--section {
+  margin: 2rem 0;
+}
+
+.add__new {
+  height: 100px;
+  &__btn {
+    width: 100%;
+    height: 48px !important;
+    border-radius: 24px !important;
+  }
+  .v-btn__content {
+    font-weight: bold;
+    line-height: 1.25;
+    letter-spacing: -0.25px;
+    text-align: center;
+    color: #888eb0;
+    font-size: 12px;
+
+    .theme--light & {
+      color: #7e88c3 !important;
+    }
+  }
+}

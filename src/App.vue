@@ -1,21 +1,42 @@
 <template>
   <v-app>
     <Layout />
-    <v-main>
-      <router-view />
-    </v-main>
+    <Snackbar v-model="snackbar" :text="snackbarConfig.text" />
+    <router-view />
   </v-app>
 </template>
 
 <script>
-import Layout from "./components/Layout.vue";
-import "./styles/app.scss";
+import data from "@/json/data.json";
+import Layout from "./components/Layout/Layout.vue";
+import Snackbar from "./components/Layout/Snackbar.vue";
+import { mapActions } from "vuex";
 export default {
-  components: { Layout },
+  components: { Layout, Snackbar },
   name: "App",
 
   data: () => ({
-    //
+    snackbar: false,
+    snackbarConfig: {},
   }),
+
+  methods: {
+    ...mapActions({
+      setInvoices: "invoices/setInvoices",
+    }),
+  },
+
+  created() {
+    if (localStorage.getItem("invoices")) {
+      this.setInvoices(JSON.parse(localStorage.getItem("invoices")));
+    } else {
+      this.setInvoices(data);
+    }
+
+    this.$root.$on("snackbar", ({ config }) => {
+      this.snackbarConfig = { ...config };
+      this.snackbar = true;
+    });
+  },
 };
 </script>

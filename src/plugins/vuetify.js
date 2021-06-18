@@ -9,10 +9,10 @@ export default new Vuetify({
     options: {
       customProperties: true,
     },
-    dark: true,
+    // dark: true,
     themes: {
       dark: {
-        primary: "#1976D2",
+        primary: "#FFF",
         secondary: "#424242",
         accent: "#82B1FF",
         error: "#FF5252",
@@ -22,7 +22,7 @@ export default new Vuetify({
         navbar: "#1e2139",
       },
       light: {
-        primary: "#1976D2",
+        primary: "#1e2139",
         secondary: "#424242",
         accent: "#82B1FF",
         error: "#FF5252",

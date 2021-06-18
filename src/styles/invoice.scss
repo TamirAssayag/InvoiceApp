@@ -1,240 +1,216 @@
-.invoice--page {
-  padding: 1rem 1.5rem;
-  transition: all 0.2s ease;
+.invoice {
+  &--page {
+    padding: 0rem 1.5rem;
+    transition: all 0.2s ease;
+    margin-bottom: 3.5rem;
 
-  .goback {
-    min-height: 47px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    cursor: pointer;
-    gap: 21px;
-    margin-bottom: 1rem;
-
-    span {
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 1.25;
-      letter-spacing: -0.25px;
-      transition: all 0.2s ease;
-
-      &:hover,
-      &:active {
-        color: #888eb0;
-      }
-    }
-  }
-
-  .wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .status__card {
-      margin: auto;
+    .wrapper {
       width: 100%;
-      height: 91px;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      padding: 1.55rem 1.5rem 1.65rem 1.5rem;
-
-      #card__title {
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 1.25;
-        letter-spacing: -0.25px;
-        color: #dfe3fa;
-
-        .theme--light & {
-          color: #858bb2;
-        }
-      }
-    }
-
-    .invoice {
-      margin: 1rem 0;
-      width: 100%;
-      min-height: 695px;
-      box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
-      padding: 1.5rem 1.5rem 1.65rem 1.5rem;
-
-      &__info {
+      .status__card {
+        margin: auto;
+        width: 100%;
+        height: 91px;
         display: flex;
-        font-size: 12px;
-        font-weight: bold;
-        line-height: 1.25;
-        letter-spacing: -0.25px;
-      }
-
-      .hashtag {
-        color: #7e88c3;
-      }
-
-      &__description {
-        margin: 4px 0 0 !important;
-        font-size: 12px;
-        line-height: 1.25;
-        letter-spacing: -0.25px;
-        color: #dfe3fa;
-        font-weight: 300;
-
-        .theme--light & {
-          color: #7e88c3;
-        }
-      }
-
-      &__sender--address {
-        margin-top: 1.93rem;
-      }
-
-      &__details {
-        display: flex;
-        min-width: 230.5px;
-        margin: 1.8rem 0;
+        align-items: center;
         justify-content: space-between;
-        .invoice--date,
-        .invoice--client {
-          margin-bottom: 2.1rem;
-        }
+        padding: 1.55rem 1.5rem 1.65rem 1.5rem;
+        margin-bottom: 1rem;
 
-        #date,
-        #client-name {
-          font-size: 15px;
-          line-height: 1.33;
-          letter-spacing: -0.31px;
-        }
-
-        .invoice__header {
+        #card__title {
           font-size: 12px;
           font-weight: 500;
           line-height: 1.25;
           letter-spacing: -0.25px;
           color: #dfe3fa;
-          margin-bottom: 12px !important;
+
+          .theme--light & {
+            color: #858bb2;
+          }
+        }
+      }
+
+      .invoice {
+        width: 100%;
+        min-height: 695px;
+        box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
+        padding: 1.5rem 1.5rem 1.65rem 1.5rem;
+
+        &__info {
+          display: flex;
+          font-size: 12px;
+          font-weight: bold;
+          line-height: 1.25;
+          letter-spacing: -0.25px;
+        }
+
+        &__description {
+          margin: 4px 0 0 !important;
+          font-size: 12px;
+          line-height: 1.25;
+          letter-spacing: -0.25px;
+          color: #dfe3fa;
+          font-weight: 300;
 
           .theme--light & {
             color: #7e88c3;
           }
         }
 
-        .client-address {
-          margin-top: 8px;
+        &__sender--address {
+          margin-top: 1.93rem;
         }
 
-        .invoice_left,
-        .invoice_right {
+        &__details {
           display: flex;
-          flex-direction: column;
+          min-width: 230.5px;
+          margin: 1.8rem 0;
+          justify-content: space-between;
+          .invoice--date,
+          .invoice--client {
+            margin-bottom: 2.1rem;
+          }
+
+          #date,
+          #client-name {
+            font-size: 15px;
+            line-height: 1.33;
+            letter-spacing: -0.31px;
+          }
+
+          .invoice__header {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -0.25px;
+            color: #dfe3fa;
+            margin-bottom: 12px !important;
+
+            .theme--light & {
+              color: #7e88c3;
+            }
+          }
+
+          .client-address {
+            margin-top: 8px;
+          }
+
+          .invoice_left,
+          .invoice_right {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        .client--email {
+          margin: 2rem 0 2.5rem 0.1rem;
+          min-height: 30px;
+          p {
+            color: white;
+
+            .theme--light & {
+              color: #7e88c3;
+
+              &:nth-child(2) {
+                color: #0c0e16;
+              }
+            }
+          }
+          .email {
+            margin-top: 0.6rem !important;
+            height: 100%;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1.33;
+            letter-spacing: -0.31px;
+          }
         }
       }
 
-      .client--email {
-        margin: 2rem 0 2.5rem 0.1rem;
-        min-height: 30px;
-        p {
-          color: white;
+      p {
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.75;
+        letter-spacing: -0.23px;
+        color: #7e88c3;
+      }
+    }
+  }
 
-          .theme--light & {
-            color: #7e88c3;
+  .invoice__total__details {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #252945;
+    padding: 24px;
+    height: 148px;
 
-            &:nth-child(2) {
-              color: #0c0e16;
+    .theme--light & {
+      background-color: #f8f8fb;
+    }
+
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      margin-bottom: 27px;
+
+      &__details {
+        .items {
+          display: flex;
+          margin-bottom: 6px;
+        }
+        h4 {
+          font-size: 12px;
+          font-weight: bold;
+          line-height: 1.27;
+          letter-spacing: -0.26px;
+
+          &:nth-child(2) {
+            color: #888eb0;
+
+            .theme--light & {
+              color: #7e88c3;
             }
           }
         }
-        .email {
-          margin-top: 0.6rem !important;
-          height: 100%;
-          font-size: 15px;
-          font-weight: bold;
-          line-height: 1.33;
-          letter-spacing: -0.31px;
-        }
+      }
+      .items__total {
+        font-size: 12px;
+        line-height: 1.25;
+        letter-spacing: -0.25px;
+        font-weight: bold;
       }
     }
-
-    p {
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 1.75;
-      letter-spacing: -0.23px;
-      color: #7e88c3;
-    }
   }
-}
-
-.invoice__total__details {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background-color: #252945;
-  padding: 24px;
-  height: 148px;
-
-  .theme--light & {
-    background-color: #f8f8fb;
-  }
-
-  .transaction {
+  .total_transaction_fee {
     display: flex;
+    padding: 1.5rem;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
-    margin-bottom: 27px;
+    height: 80px;
+    background-color: #0c0e16;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 
-    &__details {
-      .items {
-        display: flex;
-        margin-bottom: 6px;
-      }
-      h4 {
-        font-size: 12px;
-        font-weight: bold;
-        line-height: 1.27;
-        letter-spacing: -0.26px;
+    h1 {
+      font-size: 20px;
+      letter-spacing: -0.23px;
 
-        &:nth-child(2) {
-          color: #888eb0;
-
-          .theme--light & {
-            color: #7e88c3;
-          }
-        }
+      .theme--light & {
+        color: white !important;
       }
     }
-    .items__total {
-      font-size: 12px;
-      line-height: 1.25;
-      letter-spacing: -0.25px;
-      font-weight: bold;
+
+    #grand_total {
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.64;
+      letter-spacing: -0.23px;
+      color: #ffffff;
     }
-  }
-}
-.total_transaction_fee {
-  display: flex;
-  padding: 1.5rem;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  background-color: #0c0e16;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-
-  h1 {
-    font-size: 20px;
-    letter-spacing: -0.23px;
-
-    .theme--light & {
-      color: white !important;
-    }
-  }
-
-  #grand_total {
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 1.64;
-    letter-spacing: -0.23px;
-    color: #ffffff;
   }
 }

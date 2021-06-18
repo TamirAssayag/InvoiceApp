@@ -1,12 +1,11 @@
 <template>
-  <Invoices />
+  <v-main>
+    <router-view />
+  </v-main>
 </template>
 
 <script>
-import Invoices from "../components/Invoices/Invoices.vue";
 export default {
   name: "Home",
-
-  components: { Invoices },
 };
 </script>

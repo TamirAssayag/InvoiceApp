@@ -1,18 +1,25 @@
 <template>
   <section class="invoices">
-    <div class="container">
-      <InvoicesHeader />
+    <InvoicesHeader />
+    <div class="container" v-if="invoices.length">
       <InvoicesCard />
     </div>
+    <Empty v-else />
   </section>
 </template>
-
 <script>
+import { mapGetters } from "vuex";
 import InvoicesCard from "./InvoicesCard.vue";
 import InvoicesHeader from "./InvoicesHeader.vue";
+import Empty from "./NoInvoices/Empty.vue";
 export default {
-  components: { InvoicesHeader, InvoicesCard },
-  data: () => ({}),
+  components: { InvoicesHeader, InvoicesCard, Empty },
+
+  computed: {
+    ...mapGetters({
+      invoices: "invoices/invoicesByFilter",
+    }),
+  },
 };
 </script>
 

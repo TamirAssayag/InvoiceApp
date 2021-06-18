@@ -1,7 +1,8 @@
 <template>
   <div
     class="status--button"
-    v-if="data !== null"
+    :v-model="data"
+    v-if="data"
     :class="[
       {
         'status--draft': data === 'draft',

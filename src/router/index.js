@@ -1,28 +1,48 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import Invoice from "../views/Invoice.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "Invoices",
+    component: () =>
+      import(
+        /* webpackChunkName: "invoices" */ "@/components/Invoices/Invoices.vue"
+      ),
   },
+
   {
-    path: "/invoice/",
+    path: "/invoice",
     name: "invoice",
+    component: { template: "<router-view />" },
     children: [
+      {
+        path: "new",
+        name: "sku-new",
+        component: () =>
+          import(
+            /* webpackChunkName: "invoiceEdit" */ "@/components/Invoices/Edit/EditInvoice.vue"
+          ),
+      },
       {
         path: ":id",
         name: "sku",
-        component: { Invoice },
+        component: () =>
+          import(/* webpackChunkName: "invoice" */ "@/views/Invoice.vue"),
+        children: [
+          {
+            path: "edit",
+            name: "sku-edit",
+            component: () =>
+              import(
+                /* webpackChunkName: "invoiceEdit" */ "@/components/Invoices/Edit/EditInvoice.vue"
+              ),
+          },
+        ],
       },
     ],
-    component: () =>
-      import(/* webpackChunkName: "Invoice" */ "@/views/Invoice.vue"),
   },
 ];
 

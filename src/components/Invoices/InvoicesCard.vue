@@ -1,47 +1,57 @@
 <template>
   <div class="cards">
-    <div
-      class="invoices_card"
-      v-for="data in myJson"
-      :key="data.id"
-      @click="directToInvoice(data.id)"
-    >
-      <div class="invoices_card--info">
-        <li class="sku-number">
-          <ul id="hashtag">
-            #
-          </ul>
-          {{ data.id }}
-        </li>
-        <li class="addressee">{{ data.clientName }}</li>
-      </div>
-      <div class="invoices_card--info--bottom">
-        <div class="invoices_information">
-          <li class="due-date">Due {{ getDate(data.paymentDue) }}</li>
-          <li class="fee">
-            £
-            {{ data.total.toLocaleString("en", { minimumFractionDigits: 2 }) }}
+    <template v-for="invoice in invoices">
+      <div
+        class="invoices_card"
+        :key="invoice.id"
+        @click="directToInvoice(invoice.id)"
+      >
+        <div class="invoices_card--info">
+          <li class="sku-number">
+            <ul id="hashtag">
+              #
+            </ul>
+            {{ invoice.id }}
           </li>
+          <li class="client_name">{{ invoice.clientName }}</li>
         </div>
-        <InvoiceStatus :data="data.status" />
+        <div class="invoices_card--info--bottom">
+          <div class="invoices_information">
+            <li class="due-date">Due {{ getDate(invoice.paymentDue) }}</li>
+            <li class="fee">
+              £
+              {{ getTwoDigits(invoice.total) }}
+            </li>
+          </div>
+          <InvoiceStatus :data="invoice.status" />
+        </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
-import data from "../../json/data.json";
 import InvoiceStatus from "./InvoiceStatus.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: { InvoiceStatus },
-  data: () => ({
-    myJson: data,
-  }),
+  data: () => ({}),
+
+  computed: {
+    ...mapGetters({
+      invoices: "invoices/invoicesByFilter",
+      filter: "invoices/getFilter",
+    }),
+  },
 
   methods: {
     directToInvoice(id) {
       this.$router.push({ name: "sku", params: { id } });
+    },
+    updateByStatus(status) {
+      if (this.filter === "all") return true;
+      return this.filter === status;
     },
   },
 };
@@ -54,7 +64,7 @@ export default {
   gap: 1rem;
   margin: 1.1rem 0;
   .invoices_card {
-    width: 327px;
+    width: 100%;
     min-height: 134px;
     border-radius: 8px;
     box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
@@ -71,7 +81,7 @@ export default {
             color: #7e88c3;
           }
         }
-        .addressee {
+        .client_name {
           color: #858bb2;
         }
         &--bottom {
@@ -95,7 +105,7 @@ export default {
         letter-spacing: -0.25px;
         font-weight: bold;
       }
-      .addressee {
+      .client_name {
         font-size: 12px;
         line-height: 1.25;
         letter-spacing: -0.25px;
