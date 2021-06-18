@@ -1,7 +1,7 @@
 <template>
   <div class="invoice">
     <router-view />
-    <template v-if="!editMode && invoice">
+    <template v-if="invoice">
       <GoBackBtn />
       <div class="invoice--page" v-if="invoice">
         <div class="wrapper">
@@ -39,7 +39,6 @@
                 <div>
                   <p class="invoice__header">Payment Due</p>
                   <h3 id="date">
-                    <!-- // BUG // invoice.paymentTerms returns a string therefor it fails to calculate -->
                     {{
                       getDate(addDays(invoice.createdAt, invoice.paymentTerms))
                     }}
@@ -89,7 +88,7 @@
               <!-- //BUG// Broken function, gets only index 0 and not more than that, gotta loop through items array -->
               <h1>
                 £
-                {{ getTwoDigits(invoice.total) }}
+                {{ getTwoDigits(getGrandTotal(invoice.items)) }}
               </h1>
             </div>
           </section>
@@ -159,22 +158,11 @@ export default {
       this.$root.$emit("snackbar", { config: { text: "Deleted succesfully" } });
       this.deleteInvoice(this.$route.params.id);
     },
-    getGrandTotal() {
-      const items = this.invoice.items;
-      return items.forEach((item) => {
-        return console.log(item.price);
-      });
-    },
     markAsPaid() {
       this.updateStatusById({
         id: this.$route.params.id,
         status: "paid",
       });
-    },
-    addDays(date, days) {
-      var result = new Date(date);
-      result.setDate(result.getDate() + days);
-      return result;
     },
   },
   computed: {

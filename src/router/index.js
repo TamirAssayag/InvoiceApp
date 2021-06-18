@@ -11,12 +11,6 @@ const routes = [
       import(
         /* webpackChunkName: "invoices" */ "@/components/Invoices/Invoices.vue"
       ),
-  },
-
-  {
-    path: "/invoice",
-    name: "invoice",
-    component: { template: "<router-view />" },
     children: [
       {
         path: "new",
@@ -26,6 +20,14 @@ const routes = [
             /* webpackChunkName: "invoiceEdit" */ "@/components/Invoices/Edit/EditInvoice.vue"
           ),
       },
+    ],
+  },
+
+  {
+    path: "/invoice",
+    name: "invoice",
+    component: { template: "<router-view />" },
+    children: [
       {
         path: ":id",
         name: "sku",

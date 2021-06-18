@@ -17,10 +17,13 @@
         </div>
         <div class="invoices_card--info--bottom">
           <div class="invoices_information">
-            <li class="due-date">Due {{ getDate(invoice.paymentDue) }}</li>
+            <li class="due-date">
+              Due
+              {{ getDate(addDays(invoice.createdAt, invoice.paymentTerms)) }}
+            </li>
             <li class="fee text-elipsis">
               £
-              {{ getTwoDigits(invoice.total) }}
+              {{ (invoice.total = getTwoDigits(getGrandTotal(invoice.items))) }}
             </li>
           </div>
           <InvoiceStatus :data="invoice.status" />

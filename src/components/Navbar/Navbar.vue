@@ -20,7 +20,8 @@
               :title="toggleModeTitle"
             />
           </v-btn>
-          <v-divider vertical />
+          <div class="custom-divider"></div>
+          <!-- <v-divider :vertical="$vuetify.breakpoint.sm" /> -->
           <img class="user_avatar" :src="getImageUrl('image-avatar.jpg')" />
         </div>
       </ul>

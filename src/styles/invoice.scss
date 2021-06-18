@@ -1,4 +1,15 @@
+@import "@/styles/import";
+
 .invoice {
+  @include media(">lg") {
+    padding: 0 15rem;
+  }
+
+  @include media(">xl") {
+    margin: 0 auto;
+    width: 120em;
+    padding: 0 10rem;
+  }
   &--page {
     padding: 0rem 1.5rem;
     transition: all 0.2s ease;
@@ -10,6 +21,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       .status__card {
         margin: auto;
         width: 100%;

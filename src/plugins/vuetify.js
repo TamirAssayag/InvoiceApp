@@ -4,6 +4,14 @@ import Vuetify from "vuetify/lib/framework";
 Vue.use(Vuetify);
 
 export default new Vuetify({
+  breakpoint: {
+    thresholds: {
+      xs: 400,
+      sm: 768,
+      lg: 1440,
+      xl: 1920,
+    },
+  },
   customVariables: ["~/styles/variables.scss"],
   theme: {
     options: {

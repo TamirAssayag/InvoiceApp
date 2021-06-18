@@ -12,6 +12,16 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/import";
+
+.v-dialog--fullscreen {
+  @include media(">md") {
+    .goback {
+      display: none;
+    }
+  }
+}
+
 .goback {
   min-height: 4.9rem;
   display: flex;
@@ -20,6 +30,11 @@ export default {
   cursor: pointer;
   gap: 21px;
   padding: 0 1.5rem;
+
+  @include media(">lg") {
+    margin: 2rem 0;
+    min-height: 3rem;
+  }
 
   span {
     font-size: 12px;

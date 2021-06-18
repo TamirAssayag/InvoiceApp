@@ -45,10 +45,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/import";
+
 .invoices_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1.5rem 0;
+  padding: 0 1.5rem;
 
   .theme--light & {
     .header_right {
@@ -84,6 +88,11 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.8rem;
+
+  @include media(">sm") {
+    justify-content: flex-end;
+    gap: 3rem;
+  }
 
   .filter {
     font-size: 12px;

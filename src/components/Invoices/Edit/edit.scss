@@ -5,6 +5,16 @@
   &--wrapper {
     padding: 0 1.5rem;
 
+    @media screen and (min-width: 768px) {
+      padding: 0 56px;
+      margin-top: 1.5rem;
+    }
+
+    @media screen and (min-width: 1440px) {
+      padding: 0 56px;
+      margin-top: 2.5rem;
+    }
+
     .item--list {
       min-height: 248px;
 

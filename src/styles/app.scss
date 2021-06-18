@@ -1,3 +1,28 @@
 @import "./global.scss";
 @import "./variables.scss";
 @import "./typography.scss";
+
+html,
+body,
+.v-dialog {
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    margin: 0;
+    background-color: #5d5f7a;
+    -webkit-border-radius: 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #9092a5;
+    }
+  }
+
+  &::-webkit-scrollbar-button:start:decrement,
+  &::-webkit-scrollbar-button:end:increment {
+    height: 5px;
+    display: block;
+  }
+}
