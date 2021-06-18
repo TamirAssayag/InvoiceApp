@@ -18,7 +18,7 @@
         <div class="invoices_card--info--bottom">
           <div class="invoices_information">
             <li class="due-date">Due {{ getDate(invoice.paymentDue) }}</li>
-            <li class="fee">
+            <li class="fee text-elipsis">
               £
               {{ getTwoDigits(invoice.total) }}
             </li>

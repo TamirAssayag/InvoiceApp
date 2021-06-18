@@ -170,6 +170,7 @@
                   pattern="[0-9]*"
                   maxlength="2"
                   max="99"
+                  min="0"
                   @input="
                     (e) => {
                       item.total = item.price * e.target.value;
@@ -184,6 +185,9 @@
                 <label for="item-price">Price</label>
                 <input
                   id="item-price"
+                  min="0"
+                  maxlength="9999"
+                  max="9999"
                   type="number"
                   name="item-price"
                   pattern="[0-9]*"
@@ -200,14 +204,20 @@
                   "
                 />
               </div>
-              <div class="input-column">
+              <div class="input-column grow-0 text-elipsis">
                 <div class="item-total-price">
                   {{ getTwoDigits(item.total) }}
                 </div>
               </div>
-              <div class="input-row">
+              <div class="input-row grow-0">
                 <div class="trash-icon">
-                  <v-btn plain icon elevation="0" color="transparent">
+                  <v-btn
+                    plain
+                    icon
+                    elevation="0"
+                    color="transparent"
+                    @click="deleteItem(index)"
+                  >
                     <inline-svg :src="getImageUrl('icon-delete.svg')" />
                   </v-btn>
                 </div>
@@ -223,6 +233,7 @@
           elevation="0"
           :color="this.$vuetify.theme.dark ? btnColor[0] : btnColor[1]"
           rounded
+          @click="addNewItem"
           >+ Add New Item</v-btn
         >
       </div>
@@ -343,6 +354,17 @@ export default {
     },
     saveAsDraft() {
       this.newInvoice.status = "draft";
+    },
+    addNewItem() {
+      this.newInvoice.items.push({
+        name: null,
+        quantity: null,
+        price: null,
+        total: null,
+      });
+    },
+    deleteItem(i) {
+      this.newInvoice.items.splice(i, 1);
     },
   },
 

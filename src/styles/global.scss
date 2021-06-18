@@ -225,3 +225,14 @@ input {
     border: unset !important;
   }
 }
+
+.flex-0 {
+  flex: 0;
+}
+
+.text-elipsis {
+  min-width: 48px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
