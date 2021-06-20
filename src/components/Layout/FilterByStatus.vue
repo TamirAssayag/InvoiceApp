@@ -12,11 +12,29 @@
           v-on="on"
         >
           <v-icon icon id="arrow-down"> mdi-chevron-down </v-icon>
-          Filter
+          {{
+            $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
+              ? "Filter"
+              : "Filter by status"
+          }}
         </v-btn>
       </template>
+
       <v-list id="filter-dropdown">
-        <v-list-item
+        <v-checkbox
+          v-for="(item, i) in items"
+          :key="i"
+          :label="item"
+          hide-details
+          color="purple_500"
+          :value="item"
+          @click="
+            () => {
+              filter(item);
+            }
+          "
+        ></v-checkbox>
+        <!-- <v-list-item
           v-for="(item, i) in items"
           :key="i"
           @click="
@@ -26,7 +44,7 @@
           "
         >
           <v-list-item-title>{{ item }}</v-list-item-title>
-        </v-list-item>
+        </v-list-item> -->
       </v-list>
     </v-menu>
   </div>
@@ -51,23 +69,34 @@ export default {
 </script>
 
 <style lang="scss">
-.filter-btn {
+@import "@/styles/import";
+
+.v-btn.filter-btn {
+  transition: transform 0.5s ease;
+
+  &:hover,
+  &:active {
+    .mdi-chevron-down {
+      transform: rotate(-180deg) !important;
+    }
+  }
+
   .v-btn__content {
     font-size: 12px;
     font-weight: bold;
     line-height: 1.25;
     letter-spacing: -0.25px;
     margin-bottom: -4px;
-  }
-}
 
-#arrow-down {
-  width: 100%;
-  color: rgb(124, 93, 250);
-  font-size: 18px;
-  display: flex !important;
-  align-items: center;
-  gap: 2rem !important;
+    #arrow-down {
+      width: 100%;
+      color: rgb(124, 93, 250);
+      font-size: 18px;
+      display: flex !important;
+      align-items: center;
+      gap: 2rem !important;
+    }
+  }
 }
 
 #filter-dropdown {
@@ -84,6 +113,10 @@ export default {
     font-size: 12px !important;
     width: 70px !important;
     padding: 0 0.5rem !important;
+
+    @include media(">md") {
+      width: 120px !important;
+    }
 
     &__title {
       text-transform: capitalize;
@@ -102,7 +135,7 @@ export default {
   border-bottom-left-radius: 0.8rem !important;
   border-bottom-right-radius: 0.8rem !important;
   background-color: #141625 !important;
-  width: 70px !important;
+  width: 100px !important;
 
   .theme--light & {
     background-color: white !important;

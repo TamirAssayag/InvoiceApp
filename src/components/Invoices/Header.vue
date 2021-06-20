@@ -3,11 +3,7 @@
     <div class="header_left">
       <h3 class="invoices_title">Invoices</h3>
       <p class="invoices_amount">
-        {{
-          invoicesByFilter.length
-            ? `${invoicesByFilter.length} invoices`
-            : `No ${filter !== "all" ? filter : ""} Invoices`
-        }}
+        {{ displayInvoiceAmount }}
       </p>
     </div>
     <div class="header_right">
@@ -18,7 +14,13 @@
           class="new_invoice"
           @click="$router.push({ name: 'sku-new' })"
         >
-          <li>New</li>
+          <li>
+            {{
+              $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
+                ? "New"
+                : "New Invoice"
+            }}
+          </li>
           <li icon class="plus">
             <inline-svg :src="getImageUrl('icon-plus.svg')"></inline-svg>
           </li>
@@ -40,15 +42,45 @@ export default {
       invoicesByFilter: "invoices/invoicesByFilter",
       filter: "invoices/getFilter",
     }),
+    displayInvoiceAmount() {
+      if (this.invoicesByFilter.length) {
+        if (
+          !this.$vuetify.breakpoint.xs &&
+          !this.$vuetify.breakpoint.sm & (this.filter === "all")
+        ) {
+          return `There are ${this.invoicesByFilter.length} total Invoices`;
+        } else {
+          if (this.filter === "all") {
+            return `${this.invoicesByFilter.length} Invoices`;
+          } else {
+            return `${this.invoicesByFilter.length} ${this.filter} Invoices`;
+          }
+        }
+      } else {
+        return `No ${this.filter !== "all" ? this.filter : ""} Invoices`;
+      }
+    },
   },
 };
 </script>
 
 <style lang="scss">
+@import "@/styles/import";
+@import "@/styles/colors.scss";
+
 .invoices_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1.5rem 0;
+  padding: 0 1.5rem;
+
+  @include media(">md") {
+    min-height: 196px;
+    max-width: 730px;
+    margin: 0 auto;
+    padding: 0;
+  }
 
   .theme--light & {
     .header_right {
@@ -58,7 +90,7 @@ export default {
     }
 
     .invoices_amount {
-      color: #888eb0;
+      color: $blue-gray;
 
       font-weight: normal;
     }
@@ -70,6 +102,10 @@ export default {
     font-weight: bold;
     letter-spacing: -0.63px;
     margin-top: -4px;
+
+    @include media(">md") {
+      font-size: 2rem;
+    }
   }
   .invoices_amount {
     font-size: 12px;
@@ -83,19 +119,15 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.8rem;
+  // margin-bottom: 0.8rem;
 
-  .filter {
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1.25;
-    letter-spacing: -0.25px;
-    margin-bottom: -4px;
+  @include media(">sm") {
+    justify-content: flex-end;
+    gap: 3rem;
   }
 
-  .arrow-down {
-    margin-right: 5px;
-    margin-bottom: -4px;
+  #arrow-down {
+    margin-left: 5px;
   }
 
   .add {
@@ -106,16 +138,19 @@ export default {
     }
     .new_invoice {
       justify-content: flex-end;
-      width: 90px;
+      min-width: 90px;
       height: 44px;
       border-radius: 24px;
-      background-color: #7c5dfa;
+      background-color: $purple-500;
       font-size: 12px;
       font-weight: bold;
       line-height: 1.25;
       letter-spacing: -0.25px;
       padding: 0 0rem 0 0.4rem !important;
-      margin-top: 0.5rem;
+
+      @include media(">md") {
+        padding: 0.5rem 0.93rem 0.5rem 0.5rem !important;
+      }
     }
 
     .plus {

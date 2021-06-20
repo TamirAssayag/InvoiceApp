@@ -5,19 +5,25 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import Dayjs from "vue-dayjs";
 import "@/styles/app.scss";
-
+import Vuelidate from "vuelidate";
+import VueScrollTo from "vue-scrollto";
 import InlineSvg from "vue-inline-svg";
+
 Vue.component("inline-svg", InlineSvg);
 
 Vue.use(Dayjs);
+Vue.use(Vuelidate);
+Vue.use(VueScrollTo);
 
 // Mixins
 import ImageUrlMixin from "./mixins/ImageUrlMixin";
 import getRoute from "./mixins/getRoute";
 import helpers from "./mixins/helpers";
+import AppMixin from "./mixins/AppMixin";
 Vue.mixin(ImageUrlMixin);
 Vue.mixin(getRoute);
 Vue.mixin(helpers);
+Vue.mixin(AppMixin);
 
 Vue.config.productionTip = false;
 

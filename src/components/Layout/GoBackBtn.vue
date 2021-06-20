@@ -1,7 +1,9 @@
 <template>
-  <div class="goback" @click="$router.go(-1)">
-    <inline-svg :src="getImageUrl('icon-arrow-left.svg')"></inline-svg>
-    <span>Go back</span>
+  <div class="goback--wrapper">
+    <div class="goback--button" @click="$router.go(-1)">
+      <v-icon color="purple_500">mdi-chevron-left</v-icon>
+      <span>Go back</span>
+    </div>
   </div>
 </template>
 
@@ -12,26 +14,50 @@ export default {
 </script>
 
 <style lang="scss">
-.goback {
+@import "@/styles/import";
+@import "@/styles/colors.scss";
+
+.v-dialog--fullscreen {
+  @include media(">lg") {
+    .goback {
+      display: none;
+    }
+  }
+}
+
+.goback--wrapper {
   min-height: 4.9rem;
   display: flex;
-  justify-content: left;
   align-items: center;
-  cursor: pointer;
-  gap: 21px;
   padding: 0 1.5rem;
+
+  @include media(">lg") {
+    margin: 2rem 0;
+    min-height: 3rem;
+  }
+
+  .goback--button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    .mdi-chevron-left {
+      margin-bottom: 2px;
+      font-size: 18px;
+    }
+
+    &:hover,
+    &:active {
+      color: $blue-gray;
+    }
+  }
 
   span {
     font-size: 12px;
     font-weight: bold;
-    line-height: 1.25;
     letter-spacing: -0.25px;
     transition: all 0.2s ease;
-
-    &:hover,
-    &:active {
-      color: #888eb0;
-    }
   }
 }
 </style>

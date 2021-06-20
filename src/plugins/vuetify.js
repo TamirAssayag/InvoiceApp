@@ -4,11 +4,15 @@ import Vuetify from "vuetify/lib/framework";
 Vue.use(Vuetify);
 
 export default new Vuetify({
-  customVariables: ["~/styles/variables.scss"],
-  theme: {
-    options: {
-      customProperties: true,
+  breakpoint: {
+    thresholds: {
+      xs: 400,
+      sm: 768,
+      lg: 1440,
+      xl: 1920,
     },
+  },
+  theme: {
     // dark: true,
     themes: {
       dark: {
@@ -20,6 +24,7 @@ export default new Vuetify({
         success: "#4CAF50",
         warning: "#FFC107",
         navbar: "#1e2139",
+        purple_500: "#7c5dfa",
       },
       light: {
         primary: "#1e2139",
@@ -30,6 +35,7 @@ export default new Vuetify({
         success: "#4CAF50",
         warning: "#FFC107",
         navbar: "#373b53",
+        purple_500: "#7c5dfa",
       },
     },
   },

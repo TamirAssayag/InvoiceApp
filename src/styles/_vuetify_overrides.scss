@@ -1,0 +1,359 @@
+@import "./colors.scss";
+
+.v-application {
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  font-family: "Spartan", sans-serif !important;
+
+  &.theme--dark {
+    color: white !important;
+    background: $dark-400 !important;
+  }
+
+  &.theme--light {
+    color: $dark-500 !important;
+    background: $light-bg !important;
+  }
+
+  .v-dialog {
+    box-shadow: none !important;
+  }
+
+  .v-picker {
+    box-shadow: 0 1.9px 3.9px rgba(0, 0, 0, 0.035),
+      0 15px 31px rgba(0, 0, 0, 0.07);
+
+    .theme--light & {
+      background-color: white !important;
+    }
+
+    &.v-card {
+      border-radius: 1rem !important;
+      background-color: transparent !important;
+    }
+
+    .v-date-picker-header__value {
+      .accent--text {
+        color: $purple-400 !important;
+      }
+    }
+
+    &__body--no-title {
+      padding: 1rem 0 0rem;
+      background-color: $dark-200 !important;
+      border-radius: 1rem !important;
+
+      &.theme--light {
+        background: white !important;
+      }
+
+      .v-btn {
+        font-weight: bold;
+        transition: all 0.2s ease;
+
+        &::before {
+          opacity: 0 !important;
+        }
+
+        &:hover {
+          color: $purple-500;
+        }
+
+        &--icon {
+          color: $purple-400 !important;
+        }
+
+        &.v-date-picker-table__current {
+          background-color: transparent !important;
+          color: #a993ff !important;
+          border: unset;
+
+          &:before {
+            opacity: 0 !important;
+          }
+        }
+
+        &--active {
+          color: $purple-500 !important;
+          background-color: transparent !important;
+          font-size: 1rem;
+        }
+
+        .theme--light & {
+          &:hover {
+            color: $purple-400;
+          }
+        }
+      }
+
+      .theme--light {
+        background-color: white !important;
+      }
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 0 !important;
+  }
+
+  p {
+    margin: 0 !important;
+  }
+}
+
+.v-btn__content {
+  text-transform: none;
+  flex-direction: row-reverse !important;
+}
+
+.v-btn {
+  padding: 0 !important;
+  text-transform: none;
+  flex-direction: row-reverse !important;
+}
+
+.v-input {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  &__append-inner {
+    align-self: center !important;
+    margin: 0 !important;
+  }
+
+  &__slot {
+    padding: 0 1rem;
+
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+.v-select {
+  &__selections {
+    padding: 4px 0;
+  }
+
+  &__selection--comma {
+    font-weight: bold;
+  }
+}
+
+.v-list {
+  background: $dark-300 !important;
+  font-weight: bolder !important;
+  padding: 0 !important;
+
+  .theme--light & {
+    background: white !important;
+  }
+
+  &__content {
+    color: white !important;
+    font-weight: bold !important;
+  }
+
+  &-item {
+    font-weight: bold !important;
+
+    &::before {
+      background: $purple-500 !important;
+    }
+
+    &:hover {
+      &::before {
+        color: $purple-500 !important;
+      }
+    }
+
+    border-bottom: 1px solid $dark-500;
+
+    &:last-of-type {
+      border-bottom: unset !important;
+    }
+
+    .theme--light & {
+      border-bottom: 1px solid $light-blue-gray;
+    }
+
+    &--active {
+      color: white !important;
+
+      &::before {
+        background-color: $light-blue-gray !important;
+      }
+    }
+
+    &__title {
+      font-weight: bold !important;
+    }
+  }
+
+  .primary--text {
+    color: white !important;
+    &:before {
+      opacity: 0;
+      color: #00010a !important;
+    }
+    &:hover {
+      color: $purple-500 !important;
+    }
+  }
+}
+
+.v-text-field {
+  position: relative;
+  padding: 0 !important;
+  width: 100% !important;
+  background-color: $dark-300 !important;
+  border: solid 1px $dark-200;
+  border-radius: 4px;
+
+  .theme--light & {
+    color: $dark-500 !important;
+    background-color: white !important;
+    border: solid 1px $light-blue-gray !important;
+  }
+
+  .v-icon {
+    color: $dark-blue-gray !important;
+    pointer-events: none !important;
+  }
+
+  input {
+    border: unset !important;
+
+    .theme--light & {
+      border: unset !important;
+    }
+
+    &::selection {
+      color: white;
+      background-color: $dark-blue-gray;
+    }
+  }
+
+  .v-input__slot {
+    padding: 0 0.5rem !important;
+  }
+}
+
+.v-text-field__details {
+  position: absolute;
+  right: 0.5rem;
+  top: -2.2rem;
+
+  .v-messages__wrapper {
+    margin-top: 1rem;
+  }
+
+  .v-messages__message {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.25px;
+    color: $warning !important;
+  }
+}
+.error--text {
+  .v-input__slot {
+    border: 1px solid $warning !important;
+  }
+}
+
+.v-input--checkbox {
+  margin: 0 !important;
+
+  .v-btn {
+    background-color: red !important;
+
+    &:before {
+      background-color: transparent !important;
+    }
+  }
+
+  .mdi-checkbox-blank-outline {
+    color: $purple-500;
+  }
+
+  .v-input--selection-controls__ripple::before {
+    background-color: transparent !important;
+  }
+
+  .v-label {
+    font-size: 12px;
+    text-transform: capitalize;
+  }
+
+  .v-input__slot {
+    padding: 0.5rem 0.5rem !important;
+  }
+}
+
+.v-data-table {
+  background-color: $dark-200 !important;
+
+  .theme--light & {
+    background-color: transparent !important;
+  }
+
+  td {
+    padding: 0 !important;
+    border: none !important;
+    font-weight: bold;
+
+    .theme--light & {
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        color: $dark-blue-gray !important;
+      }
+    }
+
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      color: $light-blue-gray !important;
+    }
+  }
+
+  tr {
+    &:hover {
+      background-color: unset !important;
+    }
+  }
+
+  .text-left,
+  .text-center,
+  .text-right {
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .table-header {
+    font-size: 11px !important;
+    font-weight: 500;
+    font-stretch: normal !important;
+    line-height: 1.64 !important;
+    letter-spacing: -0.23px;
+    color: $light-blue-gray !important;
+
+    .theme--light & {
+      color: $dark-blue-gray !important;
+    }
+  }
+}
+
+.v-menu__content {
+  border-radius: 1rem !important;
+
+  .theme--light & {
+    box-shadow: 0 10px 20px 0 rgba(72, 84, 159, 0.25) !important;
+  }
+}
+
+.v-input--is-focused {
+  border: 1px solid $purple-500 !important;
+}

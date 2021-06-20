@@ -11,6 +11,16 @@ const routes = [
       import(
         /* webpackChunkName: "invoices" */ "@/components/Invoices/Invoices.vue"
       ),
+    children: [
+      {
+        path: "new",
+        name: "sku-new",
+        component: () =>
+          import(
+            /* webpackChunkName: "CreateInvoice" */ "@/components/Invoices/EditNew/CreateInvoice.vue"
+          ),
+      },
+    ],
   },
 
   {
@@ -19,25 +29,19 @@ const routes = [
     component: { template: "<router-view />" },
     children: [
       {
-        path: "new",
-        name: "sku-new",
-        component: () =>
-          import(
-            /* webpackChunkName: "invoiceEdit" */ "@/components/Invoices/Edit/EditInvoice.vue"
-          ),
-      },
-      {
         path: ":id",
         name: "sku",
         component: () =>
-          import(/* webpackChunkName: "invoice" */ "@/views/Invoice.vue"),
+          import(
+            /* webpackChunkName: "Invoice" */ "@/views/Invoice/Invoice.vue"
+          ),
         children: [
           {
             path: "edit",
             name: "sku-edit",
             component: () =>
               import(
-                /* webpackChunkName: "invoiceEdit" */ "@/components/Invoices/Edit/EditInvoice.vue"
+                /* webpackChunkName: "CreateInvoice" */ "@/components/Invoices/EditNew/CreateInvoice.vue"
               ),
           },
         ],

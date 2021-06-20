@@ -1,19 +1,20 @@
 <template>
   <section class="invoices">
-    <InvoicesHeader />
+    <router-view />
+    <Header />
     <div class="container" v-if="invoices.length">
-      <InvoicesCard />
+      <InvoiceList />
     </div>
     <Empty v-else />
   </section>
 </template>
 <script>
 import { mapGetters } from "vuex";
-import InvoicesCard from "./InvoicesCard.vue";
-import InvoicesHeader from "./InvoicesHeader.vue";
-import Empty from "./NoInvoices/Empty.vue";
+import InvoiceList from "./InvoiceList.vue";
+import Header from "./Header.vue";
+import Empty from "./Empty.vue";
 export default {
-  components: { InvoicesHeader, InvoicesCard, Empty },
+  components: { Header, InvoiceList, Empty },
 
   computed: {
     ...mapGetters({
@@ -24,12 +25,21 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/import";
 .invoices {
-  margin-top: 1.5rem;
-  padding: 0 1.5rem;
+  @include media(">lg") {
+    padding: 0 15rem;
+    margin: 0 0 0 3.6rem;
+  }
 
+  @include media(">xl") {
+    margin: 0 auto;
+    width: 120em;
+    padding: 0 10rem;
+  }
   .container {
-    min-height: 100vh;
+    padding: 0 1.5rem !important;
+    // min-height: 100vh;
     width: 100%;
   }
 }
