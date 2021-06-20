@@ -1,3 +1,5 @@
+@import "@/styles/colors.scss";
+
 .createInvoice {
   .theme--light & {
     background-color: white !important;
@@ -45,7 +47,7 @@
         font-weight: bold;
         line-height: 1.25;
         letter-spacing: -0.25px;
-        color: #7c5dfa;
+        color: $purple-500;
         align-self: flex-start;
         margin-bottom: 1.5rem;
       }
@@ -74,10 +76,10 @@
     font-weight: 500;
     line-height: 1.25;
     letter-spacing: -0.25px;
-    color: #888eb0;
+    color: $blue-gray;
 
     .theme--light & {
-      color: #7e88c3;
+      color: $dark-blue-gray;
     }
   }
 
@@ -128,7 +130,7 @@
         font-style: normal;
         line-height: 1.25;
         letter-spacing: -0.25px;
-        color: #888eb0;
+        color: $blue-gray;
         margin-top: 1rem;
         text-align: center;
       }
@@ -155,11 +157,11 @@
     line-height: 1.25;
     letter-spacing: -0.25px;
     text-align: center;
-    color: #888eb0;
+    color: $blue-gray;
     font-size: 12px;
 
     .theme--light & {
-      color: #7e88c3 !important;
+      color: $dark-blue-gray !important;
     }
   }
 }

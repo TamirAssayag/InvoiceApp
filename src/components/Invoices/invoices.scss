@@ -1,0 +1,128 @@
+@import "@/styles/import.scss";
+@import "@/styles/colors.scss";
+
+.cards {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  margin: 1.1rem 0;
+
+  @include media(">md") {
+    margin: auto;
+    max-width: 730px;
+  }
+
+  .invoices_card {
+    display: flex;
+    width: 100%;
+    min-height: 134px;
+    border-radius: 8px;
+    box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.1);
+    background-color: $dark-300;
+    padding: 1.5rem 1.5rem;
+    cursor: pointer;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    border: solid 1px transparent;
+
+    &:hover {
+      border: solid 1px $purple-500;
+    }
+
+    @include media(">md") {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+    }
+
+    .theme--light & {
+      background-color: white;
+    }
+
+    .left,
+    .right {
+      font-size: 12px;
+      font-size: 12px;
+      line-height: 1.25;
+      letter-spacing: -0.25px;
+      font-weight: bold;
+
+      ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        @include media(">md") {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .invoice_information {
+        @include media(">md") {
+          gap: 2.7rem;
+          text-align: center;
+
+          li {
+            text-align: left !important;
+          }
+        }
+        &__half {
+          @include media(">md") {
+            .v-btn {
+              margin-left: 1rem;
+            }
+          }
+        }
+      }
+
+      .client_name {
+        margin-bottom: 1.5rem;
+        text-align: right;
+        color: $blue-gray;
+        font-weight: normal;
+
+        @include media(">md") {
+          margin: 0;
+        }
+      }
+
+      .invoice_id {
+        margin-bottom: 1.5rem;
+        display: flex;
+        .hashtag {
+          color: $dark-blue-gray;
+        }
+
+        @include media(">md") {
+          margin: 0;
+        }
+      }
+
+      .due-date {
+        font-weight: normal;
+        color: $light-blue-gray;
+
+        .theme--light & {
+          color: $dark-blue-gray;
+        }
+      }
+
+      .fee {
+        margin-top: 0.5rem;
+        font-size: 16px;
+        font-weight: 600;
+        font-weight: bold;
+        line-height: 1.5;
+        letter-spacing: -0.8px;
+
+        @include media(">md") {
+          margin: 0 2rem 0;
+        }
+      }
+    }
+  }
+}

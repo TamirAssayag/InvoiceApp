@@ -20,12 +20,19 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/import";
+@import "@/styles/colors.scss";
+
 .empty {
   height: 457px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @include media(">md") {
+    height: calc(100vh - 88px);
+  }
 
   &--illustration {
     height: 160px;
@@ -43,10 +50,10 @@ export default {
     line-height: 1.25;
     letter-spacing: -0.25px;
     text-align: center;
-    color: #dfe3fa;
+    color: $light-blue-gray;
 
     .theme--light & {
-      color: #888eb0;
+      color: $blue-gray;
     }
   }
 }

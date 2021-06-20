@@ -32,7 +32,9 @@ const routes = [
         path: ":id",
         name: "sku",
         component: () =>
-          import(/* webpackChunkName: "invoice" */ "@/views/Invoice.vue"),
+          import(
+            /* webpackChunkName: "Invoice" */ "@/views/Invoice/Invoice.vue"
+          ),
         children: [
           {
             path: "edit",

@@ -15,15 +15,16 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/colors.scss";
 .invoice--buttons__container {
   width: 100%;
-  background-color: #1e2139;
+  background-color: $dark-300;
   height: 91px;
   display: flex;
   align-items: center;
 
   .theme--light & {
-    background-color: #ffffff;
+    background-color: white;
     box-shadow: 0 10px 110px rgba(0, 0, 0, 0.295);
   }
 }
@@ -44,7 +45,7 @@ export default {
       font-weight: bold !important;
       line-height: 1.25 !important;
       letter-spacing: -0.25px !important;
-      color: #dfe3fa;
+      color: $light-blue-gray;
 
       .theme--light & {
         color: white !important;
@@ -57,7 +58,7 @@ export default {
         background-color: #f9fafe !important;
 
         .v-btn__content {
-          color: #7e88c3 !important;
+          color: $dark-blue-gray !important;
         }
       }
     }
@@ -75,7 +76,7 @@ export default {
 
     .theme--light & {
       .v-btn__content {
-        color: #888eb0 !important;
+        color: $blue-gray !important;
       }
     }
   }

@@ -1,5 +1,4 @@
 @import "./global.scss";
-@import "./variables.scss";
 @import "./typography.scss";
 
 html,
@@ -25,4 +24,12 @@ body,
     height: 5px;
     display: block;
   }
+}
+
+li {
+  list-style: none;
+}
+
+.hashtag {
+  color: $dark-blue-gray;
 }

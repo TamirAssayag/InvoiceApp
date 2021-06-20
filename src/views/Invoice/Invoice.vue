@@ -2,31 +2,54 @@
   <div class="invoice">
     <router-view />
     <template v-if="invoice">
-      <GoBackBtn />
+      <GoBackBtn class="goback--invoice" />
       <div class="invoice--page" v-if="invoice">
         <div class="wrapper">
-          <div class="status__card card">
+          <div class="status__card desktop card">
             <span id="card__title">Status</span>
             <div id="status">
               <Status :data="invoice.status" />
             </div>
+
+            <Buttons>
+              <v-btn elevation="0" color="#252945" rounded @click="editInvoice"
+                >Edit</v-btn
+              >
+              <v-btn
+                elevation="0"
+                color="#ec5757"
+                rounded
+                @click="dialog = true"
+                >Delete</v-btn
+              >
+              <v-btn
+                v-if="invoice.status !== 'paid'"
+                elevation="0"
+                color="purple_500"
+                rounded
+                @click="markAsPaid()"
+                >Mark As Paid</v-btn
+              >
+            </Buttons>
           </div>
 
           <section class="invoice card">
-            <div class="invoice__info">
-              <ul class="hashtag">
-                #
-              </ul>
-              {{ invoice.id }}
-            </div>
-            <p class="invoice__description">{{ invoice.description }}</p>
+            <section class="top">
+              <div class="invoice__info">
+                <ul>
+                  <li class="hashtag">#</li>
+                  <li>{{ invoice.id }}</li>
+                </ul>
+                <p class="invoice__description">{{ invoice.description }}</p>
+              </div>
 
-            <div class="invoice__sender--address">
-              <p>{{ invoice.senderAddress.street }}</p>
-              <p>{{ invoice.senderAddress.city }}</p>
-              <p>{{ invoice.senderAddress.postCode }}</p>
-              <p>{{ invoice.senderAddress.country }}</p>
-            </div>
+              <div class="invoice__sender--address">
+                <p>{{ invoice.senderAddress.street }}</p>
+                <p>{{ invoice.senderAddress.city }}</p>
+                <p>{{ invoice.senderAddress.postCode }}</p>
+                <p>{{ invoice.senderAddress.country }}</p>
+              </div>
+            </section>
 
             <section class="invoice__details">
               <div class="invoice_left">
@@ -57,16 +80,25 @@
                   <p>{{ invoice.clientAddress.country }}</p>
                 </div>
               </div>
+              <div class="client--email d-desktop">
+                <p>Sent To</p>
+                <p class="email">
+                  {{
+                    invoice.clientEmail ? invoice.clientEmail : "No Email Set"
+                  }}
+                </p>
+              </div>
             </section>
-            <div class="client--email">
+            <div class="client--email d-mobile">
               <p>Sent To</p>
               <p class="email">
-                {{ invoice.clientEmail }}
+                {{ invoice.clientEmail ? invoice.clientEmail : "No Email Set" }}
               </p>
             </div>
+
             <div class="invoice__total__details">
               <section
-                class="invoice__total"
+                class="invoice__total d-mobile"
                 v-for="item in invoice.items"
                 :key="item.name"
               >
@@ -84,10 +116,35 @@
                   </div>
                 </div>
               </section>
+
+              <v-simple-table class="d-desktop">
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th class="text-left table-header">Item Name</th>
+                      <th class="text-center table-header">QTY.</th>
+                      <th class="text-right table-header">Price</th>
+                      <th class="text-right table-header">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="item in invoice.items" :key="item.name">
+                      <td>{{ item.name }}</td>
+                      <td class="text-center">{{ item.quantity }}</td>
+                      <td class="text-right">
+                        £ {{ getTwoDigits(item.price) }}
+                      </td>
+                      <td class="text-right">
+                        £ {{ getTwoDigits(item.total) }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
             </div>
+
             <div class="total_transaction_fee">
               <p id="grand_total">Grand Total</p>
-              <!-- //BUG// Broken function, gets only index 0 and not more than that, gotta loop through items array -->
               <h1>
                 £
                 {{ getTwoDigits(getGrandTotal(invoice.items)) }}
@@ -97,7 +154,7 @@
         </div>
       </div>
 
-      <Buttons>
+      <Buttons class="buttons-mobile">
         <v-btn elevation="0" color="#252945" rounded @click="editInvoice"
           >Edit</v-btn
         >
@@ -108,7 +165,7 @@
         <v-btn
           v-if="invoice.status !== 'paid'"
           elevation="0"
-          color="#7c5dfa"
+          color="purple_500"
           rounded
           @click="markAsPaid()"
           >Mark As Paid</v-btn
@@ -119,7 +176,7 @@
         v-model="dialog"
         :title="deleteModal.title"
         :action="deleteModal.delete"
-        @onClose="dialog = false"
+        @onClose="closeDialog()"
         @onAction="removeInvoice()"
       >
         Are you sure you want to delete Invoice #{{ invoice.id }} ? This action
@@ -130,12 +187,12 @@
 </template>
 
 <script>
-import "../styles/invoice.scss";
-import Status from "../components/Invoices/Status.vue";
-import GoBackBtn from "../components/Layout/GoBackBtn.vue";
+import "./invoice.scss";
+import Status from "../../components/Invoices/Status.vue";
+import GoBackBtn from "../../components/Layout/GoBackBtn.vue";
 import { mapActions } from "vuex";
-import Modal from "../components/Layout/Modal.vue";
-import Buttons from "../components/Invoices/Buttons.vue";
+import Modal from "../../components/Layout/Modal.vue";
+import Buttons from "../../components/Invoices/Buttons.vue";
 export default {
   components: { Status, GoBackBtn, Modal, Buttons },
   name: "Invoice",
@@ -165,6 +222,9 @@ export default {
         id: this.$route.params.id,
         status: "paid",
       });
+    },
+    closeDialog() {
+      this.dialog = false;
     },
   },
   computed: {

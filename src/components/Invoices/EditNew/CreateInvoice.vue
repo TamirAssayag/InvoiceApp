@@ -26,7 +26,6 @@
 <script>
 import "./create_invoice.scss";
 import GoBackBtn from "../../Layout/GoBackBtn.vue";
-import cloneDeep from "lodash/cloneDeep";
 import Form from "./Form.vue";
 export default {
   components: { GoBackBtn, Form },
@@ -47,7 +46,6 @@ export default {
   },
 
   created() {
-    if (!this.saveMode) this.newInvoice = cloneDeep(this.invoice);
     document.querySelector("body").classList.add("popup-open");
     document.querySelector("html").classList.add("popup-open");
   },

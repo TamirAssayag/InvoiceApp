@@ -18,7 +18,7 @@ const mutations = {
     state.invoices[identifier].status = status;
   },
   addInvoice(state, data) {
-    // Pushing to the invoices array the new invoice information
+    // Pushing to the invoices array the new invoice object
     state.invoices.push(data);
   },
   deleteInvoice(state, id) {

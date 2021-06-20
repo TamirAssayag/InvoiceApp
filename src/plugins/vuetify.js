@@ -12,11 +12,7 @@ export default new Vuetify({
       xl: 1920,
     },
   },
-  customVariables: ["~/styles/variables.scss"],
   theme: {
-    options: {
-      customProperties: true,
-    },
     // dark: true,
     themes: {
       dark: {
@@ -28,6 +24,7 @@ export default new Vuetify({
         success: "#4CAF50",
         warning: "#FFC107",
         navbar: "#1e2139",
+        purple_500: "#7c5dfa",
       },
       light: {
         primary: "#1e2139",
@@ -38,6 +35,7 @@ export default new Vuetify({
         success: "#4CAF50",
         warning: "#FFC107",
         navbar: "#373b53",
+        purple_500: "#7c5dfa",
       },
     },
   },

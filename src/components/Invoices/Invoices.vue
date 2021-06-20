@@ -33,13 +33,13 @@ export default {
   }
 
   @include media(">xl") {
-    margin: auto;
+    margin: 0 auto;
     width: 120em;
     padding: 0 10rem;
   }
   .container {
     padding: 0 1.5rem !important;
-    min-height: 100vh;
+    // min-height: 100vh;
     width: 100%;
   }
 }

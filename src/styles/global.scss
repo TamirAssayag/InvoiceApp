@@ -1,131 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;300;500;600;700&display=swap");
-
-.v-application {
-  a {
-    text-decoration: none !important;
-    color: inherit !important;
-  }
-  font-family: "Spartan", sans-serif !important;
-
-  &.theme--dark {
-    color: #ffffff !important;
-    background: #141625 !important;
-  }
-
-  &.theme--light {
-    color: #0c0e16 !important;
-    background: #f8f8fb !important;
-  }
-
-  .v-dialog {
-    box-shadow: none !important;
-  }
-
-  .v-picker {
-    box-shadow: 0 1.9px 3.9px rgba(0, 0, 0, 0.035),
-      0 15px 31px rgba(0, 0, 0, 0.07);
-
-    .theme--light & {
-      background-color: white !important;
-    }
-
-    &.v-card {
-      border-radius: 1rem !important;
-      background-color: transparent !important;
-    }
-
-    .v-date-picker-header__value {
-      .accent--text {
-        color: #9277ff !important;
-      }
-    }
-
-    &__body--no-title {
-      padding: 1rem 0 0rem;
-      background-color: #252945 !important;
-      border-radius: 1rem !important;
-
-      &.theme--light {
-        background: white !important;
-      }
-
-      .v-btn {
-        font-weight: bold;
-        transition: all 0.2s ease;
-
-        &::before {
-          opacity: 0 !important;
-        }
-
-        &:hover {
-          color: #7c5dfa;
-        }
-
-        &--icon {
-          color: #9277ff !important;
-        }
-
-        &.v-date-picker-table__current {
-          background-color: transparent !important;
-          color: #a993ff !important;
-          border: unset;
-
-          &:before {
-            opacity: 0 !important;
-          }
-        }
-
-        &--active {
-          color: #7c5dfa !important;
-          background-color: transparent !important;
-          font-size: 1rem;
-        }
-
-        .theme--light & {
-          &:hover {
-            color: #9277ff;
-          }
-        }
-      }
-
-      .theme--light {
-        background-color: #ffffff !important;
-      }
-    }
-  }
-
-  ul,
-  ol {
-    padding-left: 0 !important;
-  }
-
-  p {
-    margin: 0 !important;
-  }
-}
-
-li {
-  list-style: none;
-}
-
-.v-btn__content {
-  text-transform: none;
-  flex-direction: row-reverse !important;
-}
-
-.v-btn {
-  padding: 0 !important;
-  text-transform: none;
-  flex-direction: row-reverse !important;
-}
-
-.hashtag {
-  color: #7e88c3;
-}
+@import "./import";
+@import "./colors.scss";
+@import "./vuetify_overrides.scss";
 
 input {
-  background-color: #1e2139 !important;
-  border: solid 1px #252945;
+  background-color: $dark-300 !important;
+  border: solid 1px $dark-200;
   border-radius: 4px;
   padding: 17px 16px;
   font-weight: bold;
@@ -135,94 +15,9 @@ input {
   width: 100% !important;
 
   .theme--light & {
-    color: #0c0e16 !important;
-    background-color: #ffffff !important;
-    border: solid 1px #dfe3fa !important;
-  }
-}
-
-.v-input {
-  width: 100%;
-  margin-bottom: 1rem;
-
-  &__append-inner {
-    align-self: center !important;
-    margin: 0 !important;
-  }
-
-  &__slot {
-    padding: 0 1rem;
-
-    &::before {
-      opacity: 0;
-    }
-  }
-}
-
-.v-select {
-  &__selections {
-    padding: 4px 0;
-  }
-
-  &__selection--comma {
-    font-weight: bold;
-  }
-}
-
-.v-list {
-  background: #1e2139 !important;
-  font-weight: bolder !important;
-
-  .theme--light & {
-    background: white !important;
-  }
-
-  &__content {
-    color: white !important;
-    font-weight: bold !important;
-  }
-
-  &-item {
-    font-weight: bold !important;
-    &--active {
-      color: white !important;
-    }
-
-    &__title {
-      font-weight: bold !important;
-    }
-  }
-
-  .primary--text {
-    color: white !important;
-    &:before {
-      opacity: 0;
-      color: #00010a !important;
-    }
-  }
-}
-
-.v-text-field {
-  padding: 0 !important;
-  width: 100% !important;
-  background-color: #1e2139 !important;
-  border: solid 1px #252945;
-  outline: none;
-  border-radius: 4px;
-
-  .theme--light & {
-    color: #0c0e16 !important;
-    background-color: #ffffff !important;
-    border: solid 1px #dfe3fa !important;
-  }
-
-  .v-icon {
-    color: #7e88c3 !important;
-    pointer-events: none !important;
-  }
-
-  input {
-    border: unset !important;
+    color: $dark-500 !important;
+    background-color: white !important;
+    border: solid 1px $light-blue-gray !important;
   }
 }
 
@@ -237,12 +32,53 @@ input {
   overflow: hidden;
 }
 
-#no-background-hover::before {
-  background-color: transparent !important;
-}
-
 .popup-open {
   overflow-y: hidden;
   overflow-x: hidden;
   max-height: 100vh;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-radius: 0;
+  padding: 0.4rem !important;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 0 0 0px 1500px $dark-200 inset;
+  transition: background-color 5000s ease-in-out 0s;
+
+  .theme--light & {
+    -webkit-text-fill-color: $dark-200;
+    -webkit-box-shadow: 0 0 0px 1500px rgb(255, 255, 255) inset;
+  }
+}
+
+.d-desktop {
+  display: block;
+  @include media("<md") {
+    display: none;
+  }
+}
+
+.d-mobile {
+  display: block;
+  @include media(">md") {
+    display: none;
+  }
+}
+
+.v-data-table > .v-data-table__wrapper > table > tbody > tr > td,
+.v-data-table > .v-data-table__wrapper > table > thead > tr > td,
+.v-data-table > .v-data-table__wrapper > table > tfoot > tr > td {
+  background-color: $dark-200 !important;
+
+  .theme--light & {
+    background-color: transparent !important;
+  }
 }

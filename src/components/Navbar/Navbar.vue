@@ -11,17 +11,17 @@
             icon
             small
             dark
-            plain
             @click="toggleDarkMode"
             color="transparent"
+            class="mode"
           >
             <inline-svg
               :src="getImageUrl(toggleModeIcon)"
               :title="toggleModeTitle"
+              class="darkmode"
             />
           </v-btn>
           <div class="custom-divider"></div>
-          <!-- <v-divider :vertical="$vuetify.breakpoint.sm" /> -->
           <img class="user_avatar" :src="getImageUrl('image-avatar.jpg')" />
         </div>
       </ul>
@@ -53,4 +53,17 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.mode {
+  .v-btn__content {
+    svg {
+      path {
+        transition: 0.3s ease all;
+        &:hover {
+          fill: #dfe3fa;
+        }
+      }
+    }
+  }
+}
+</style>

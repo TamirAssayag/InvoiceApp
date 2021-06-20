@@ -1,9 +1,11 @@
+@import "./colors.scss";
+
 .card {
   border-radius: 8px;
-  background-color: #1e2139;
+  background-color: $dark-300;
 
   .theme--light & {
-    color: #0c0e16;
+    color: $dark-500;
     background-color: white;
   }
 }
@@ -22,8 +24,12 @@
     background-color: hsla(231, 20%, 27%, 0.06);
 
     .theme--dark & {
-      color: #dfe3fa;
+      color: $light-blue-gray;
       background-color: hsla(231, 73%, 93%, 0.06);
     }
   }
+}
+
+#no-background-hover::before {
+  background-color: transparent !important;
 }

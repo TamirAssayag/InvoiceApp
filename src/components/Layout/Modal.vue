@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/colors.scss";
 .modal {
   &-dialog {
     padding: 0 0 !important;
@@ -57,7 +58,7 @@ export default {
     border-radius: 8px !important;
     .v-card {
       padding: 32px 0 !important;
-      background-color: #1e2139 !important;
+      background-color: $dark-300 !important;
       max-height: 220px !important;
 
       .theme--light & {
@@ -83,10 +84,10 @@ export default {
     font-weight: 500;
     line-height: 1.83;
     letter-spacing: -0.25px;
-    color: #888eb0;
+    color: $blue-gray;
 
     .theme--light & {
-      color: #7e88c3;
+      color: $dark-blue-gray;
     }
   }
 
