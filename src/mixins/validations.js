@@ -129,4 +129,39 @@ export default {
       return errors;
     },
   },
+  methods: {
+    getItemEachIter(index) {
+      return this.$v.newInvoice.items.$each.$iter[index];
+    },
+    itemNameErrorMessages(index) {
+      const errors = [];
+      const $v = this.getItemEachIter(index).name;
+      if (!$v.$dirty) {
+        return errors;
+      } else {
+        !$v.required && errors.push("can't be empty");
+      }
+      return errors;
+    },
+    itemPriceErrorMessages(index) {
+      const errors = [];
+      const $v = this.getItemEachIter(index).price;
+      if (!$v.$dirty) {
+        return errors;
+      } else {
+        !$v.required && errors.push("can't be empty");
+      }
+      return errors;
+    },
+    itemQuantityErrorMessages(index) {
+      const errors = [];
+      const $v = this.getItemEachIter(index).quantity;
+      if (!$v.$dirty) {
+        return errors;
+      } else {
+        !$v.required && errors.push("can't be empty");
+      }
+      return errors;
+    },
+  },
 };

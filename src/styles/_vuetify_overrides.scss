@@ -211,7 +211,6 @@
   width: 100% !important;
   background-color: $dark-300 !important;
   border: solid 1px $dark-200;
-  outline: none;
   border-radius: 4px;
 
   .theme--light & {
@@ -261,7 +260,7 @@
   }
 }
 .error--text {
-  &:nth-child(2) {
+  .v-input__slot {
     border: 1px solid $warning !important;
   }
 }
@@ -353,4 +352,8 @@
   .theme--light & {
     box-shadow: 0 10px 20px 0 rgba(72, 84, 159, 0.25) !important;
   }
+}
+
+.v-input--is-focused {
+  border: 1px solid $purple-500 !important;
 }

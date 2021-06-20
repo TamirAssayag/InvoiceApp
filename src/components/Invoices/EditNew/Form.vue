@@ -9,11 +9,7 @@
         </h2>
       </div>
 
-      <v-form
-        v-model="valid"
-        @submit.prevent="handleSaveChanges"
-        id="edited-form"
-      >
+      <v-form @submit.prevent="handleSaveChanges" id="edited-form">
         <section class="bill--form">
           <span class="from">Bill From</span>
           <div class="createInvoice--form">
@@ -25,6 +21,7 @@
               type="text"
               name="street-address"
               required
+              @focus="reset('senderAddress.street')"
               @blur="touch('senderAddress.street')"
               v-model="newInvoice.senderAddress.street"
             />
@@ -39,6 +36,7 @@
                   name="city"
                   required
                   :error-messages="cityFieldError"
+                  @focus="reset('senderAddress.city')"
                   @blur="touch('senderAddress.city')"
                   v-model="newInvoice.senderAddress.city"
                 />
@@ -52,6 +50,7 @@
                   name="post-code"
                   type="text"
                   required
+                  @focus="reset('senderAddress.postCode')"
                   @blur="touch('senderAddress.postCode')"
                   v-model="newInvoice.senderAddress.postCode"
                 />
@@ -65,6 +64,7 @@
               type="text"
               required
               :error-messages="countryError"
+              @focus="reset('senderAddress.country')"
               @blur="touch('senderAddress.country')"
               v-model="newInvoice.senderAddress.country"
             />
@@ -80,6 +80,7 @@
                 type="text"
                 name="name"
                 required
+                @focus="reset('clientName')"
                 @blur="touch('clientName')"
                 :error-messages="clientNameError"
                 v-model="newInvoice.clientName"
@@ -92,6 +93,7 @@
                 type="email"
                 name="email"
                 :error-messages="emailErrors"
+                @focus="reset('clientEmail')"
                 @blur="touch('clientEmail')"
                 v-model="newInvoice.clientEmail"
               />
@@ -104,6 +106,7 @@
                 required
                 type="text"
                 name="street-address"
+                @focus="reset('clientAddress.street')"
                 @blur="touch('clientAddress.street')"
                 v-model="newInvoice.clientAddress.street"
               />
@@ -118,6 +121,7 @@
                     name="city"
                     required
                     :error-messages="clientCityError"
+                    @focus="reset('clientAddress.city')"
                     @blur="touch('clientAddress.city')"
                     v-model="newInvoice.clientAddress.city"
                   />
@@ -131,6 +135,7 @@
                     type="text"
                     required
                     :error-messages="clientPostCodeError"
+                    @focus="reset('clientAddress.postCode')"
                     @blur="touch('clientAddress.postCode')"
                     v-model="newInvoice.clientAddress.postCode"
                   />
@@ -145,6 +150,7 @@
                 type="text"
                 required
                 :error-messages="clientCountryError"
+                @focus="reset('clientAddress.country')"
                 @blur="touch('clientAddress.country')"
                 v-model="newInvoice.clientAddress.country"
               />
@@ -155,11 +161,6 @@
         <section class="date--section">
           <div class="createInvoice--form">
             <label for="Invoice-date">Invoice Date</label>
-            <!-- <v-dialog
-              v-model="modal"
-              :click:outside="(modal = false)"
-              :scrollable="false"
-            > -->
 
             <v-menu
               v-model="modal"
@@ -180,13 +181,13 @@
                   append-icon="mdi-calendar"
                   required
                   :error-messages="createdAtError"
+                  @focus="reset('createdAt')"
                   @blur="touch('createdAt')"
                   :value="getDate(newInvoice.createdAt)"
                 ></v-text-field>
               </template>
               <v-date-picker v-model="newInvoice.createdAt" no-title>
               </v-date-picker>
-              <!-- </v-dialog> -->
             </v-menu>
 
             <label for="payment-terms">Payment Terms</label>
@@ -202,6 +203,7 @@
                 $vuetify.theme.dark ? textFieldColor[0] : textFieldColor[1]
               "
               :error-messages="paymentTermsError"
+              @focus="reset('paymentTerms')"
               @blur="touch('paymentTerms')"
               v-model="newInvoice.paymentTerms"
             >
@@ -219,6 +221,7 @@
               name="Description"
               required
               :error-messages="descriptionError"
+              @focus="reset('description')"
               @blur="touch('description')"
               v-model="newInvoice.description"
             />
@@ -234,17 +237,23 @@
           <section :class="['item--list', `item--list__${index}`]">
             <div class="item--list__form">
               <label :for="`itemname-${index}`">Item Name</label>
-              <input
-                name="`itemname-${index}`"
+              <v-text-field
+                dense
+                rounded
+                :name="`itemname-${index}`"
                 :id="`itemname-${index}`"
                 type="text"
+                required
                 v-model="item.name"
+                @focus="getItemEachIter(index).name.$reset()"
+                @blur="getItemEachIter(index).name.$touch()"
+                :error-messages="itemNameErrorMessages(index)"
               />
 
               <div class="input--flex">
                 <div class="input-row">
                   <label :for="`quantity-${index}`">Qty.</label>
-                  <input
+                  <v-text-field
                     type="number"
                     :id="`quantity-${index}`"
                     name="quantity"
@@ -252,7 +261,11 @@
                     maxlength="2"
                     max="99"
                     min="0"
-                    @input="
+                    required
+                    @focus="getItemEachIter(index).quantity.$reset()"
+                    @blur="getItemEachIter(index).quantity.$touch()"
+                    :error-messages="itemQuantityErrorMessages(index)"
+                    @input.native="
                       (e) => {
                         item.total = item.price * e.target.value;
                         item.price ? item.total : e.target.value;
@@ -263,7 +276,7 @@
                 </div>
                 <div class="input-column">
                   <label :for="`item-price-${index}`">Price</label>
-                  <input
+                  <v-text-field
                     :id="`item-price-${index}`"
                     min="0"
                     maxlength="9999"
@@ -272,7 +285,10 @@
                     name="item-price"
                     pattern="[0-9]*"
                     :value="item.price"
-                    @input="
+                    @focus="getItemEachIter(index).price.$reset()"
+                    @blur="getItemEachIter(index).price.$touch()"
+                    :error-messages="itemPriceErrorMessages(index)"
+                    @input.native="
                       (e) => {
                         item.total = item.quantity * e.target.value;
                         item.quantity
@@ -366,7 +382,6 @@ export default {
     date: new Date().toISOString().substr(0, 10),
     menu: false,
     modal: false,
-    valid: false,
     snackbar: false,
     text: `Saved changes.`,
     vertical: true,
@@ -408,7 +423,6 @@ export default {
   validations: {
     newInvoice: {
       createdAt: { required },
-      paymentDue: { required },
       description: { required },
       paymentTerms: { required },
       clientName: { required },
@@ -425,12 +439,11 @@ export default {
         postCode: { required },
         country: { required },
       },
-      $each: {
-        items: {
+      items: {
+        $each: {
           name: { required },
           quantity: { required },
           price: { required },
-          total: { required },
         },
       },
     },
@@ -451,7 +464,15 @@ export default {
       addInvoice: "invoices/addInvoice",
     }),
     handleSaveChanges() {
-      if (!this.valid) return false;
+      this.$v.$touch();
+      console.log(this.$v);
+      if (this.$v.$invalid) {
+        return this.$scrollTo(".error--text", 500, {
+          container: ".create-invoice",
+          offset: -200,
+        });
+      }
+
       if (this.saveMode) {
         this.addInvoice(this.newInvoice);
       } else {
@@ -477,19 +498,25 @@ export default {
         price: null,
         total: null,
       });
-      // Scrolling to the new item list added according to the index set
-      setTimeout(() => {
-        this.$vuetify.goTo(`.item--list__${this.newInvoice.items.length - 1}`);
+
+      // Wait until new item created in DOM
+      Promise.resolve().then(() => {
+        // Scrolling to the new item list added according to the index set
+        this.$scrollTo(
+          `.item--list__${this.newInvoice.items.length - 1}`,
+          500,
+          { container: ".create-invoice" }
+        );
       });
     },
     deleteItem(i) {
       this.newInvoice.items.splice(i, 1);
     },
+    reset(path) {
+      return get(this.$v.newInvoice, path).$reset();
+    },
     touch(path) {
       return get(this.$v.newInvoice, path).$touch();
-    },
-    submit() {
-      this.$v.$touch();
     },
   },
 
@@ -507,7 +534,7 @@ export default {
 <style lang="scss">
 #edited-form {
   .v-text-field--rounded {
-    border-radius: 8px !important;
+    border-radius: 4px !important;
   }
 
   .v-input {

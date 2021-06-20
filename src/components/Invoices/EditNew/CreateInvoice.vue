@@ -5,7 +5,7 @@
         <v-dialog
           v-model="isOpen"
           no-click-animation
-          content-class="custom-dialog"
+          content-class="create-invoice"
           persistent
           transition="dialog-bottom-transition"
           mobile-breakpoint="0"
@@ -59,7 +59,7 @@ export default {
 <style lang="scss">
 @import "@/styles/import";
 
-.custom-dialog {
+.create-invoice {
   border-radius: 0rem !important;
   opacity: 1 !important;
   max-width: 100% !important;
