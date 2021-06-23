@@ -199,7 +199,6 @@
               <div class="input--column flex-1">
                 <label for="Invoice-date">Invoice Date</label>
                 <v-menu
-                  v-model="modal"
                   :close-on-content-click="false"
                   transition="scroll-y-transition"
                   offset-y
@@ -210,6 +209,7 @@
                   <template v-slot:activator="{ on }">
                     <v-text-field
                       class="d-desktop"
+                      style="cursor: pointer"
                       readonly
                       :color="
                         $vuetify.theme.dark
@@ -286,7 +286,6 @@
           <div class="createInvoice--form">
             <label for="Invoice-date">Invoice Date</label>
             <v-menu
-              v-model="modal"
               :close-on-content-click="false"
               :nudge-bottom="1"
               :nudge-right="17"
@@ -300,6 +299,7 @@
               <template v-slot:activator="{ on }">
                 <v-text-field
                   readonly
+                  style="cursor: pointer"
                   :color="
                     $vuetify.theme.dark ? textFieldColor[0] : textFieldColor[1]
                   "
@@ -465,19 +465,21 @@
             </div>
           </section>
         </v-scroll-y-reverse-transition>
-      </v-form>
 
-      <div class="add__new">
-        <v-btn
-          class="add__new__btn"
-          elevation="0"
-          :color="this.$vuetify.theme.dark ? btnColor[0] : btnColor[1]"
-          rounded
-          @click="addNewItem"
-          >+ Add New Item</v-btn
-        >
-      </div>
+        <div class="add__new">
+          <v-btn
+            class="add__new__btn"
+            elevation="0"
+            :color="this.$vuetify.theme.dark ? btnColor[0] : btnColor[1]"
+            rounded
+            @click="addNewItem"
+            >+ Add New Item</v-btn
+          >
+          <p class="text__error mt-7">{{ text_error }}</p>
+        </div>
+      </v-form>
     </div>
+
     <Buttons class="created-invoice__buttons">
       <v-btn elevation="0" color="#252945" rounded @click="$router.go(-1)">{{
         saveMode ? "Discard" : "Cancel"
@@ -526,6 +528,7 @@ export default {
     modal: false,
     snackbar: false,
     text: `Saved changes.`,
+    text_error: null,
     vertical: true,
     textFieldColor: ["purple_500", "#7e88c3"],
     net: [1, 7, 14, 30],
@@ -608,10 +611,13 @@ export default {
     handleSaveChanges() {
       this.$v.$touch();
       if (this.$v.$invalid) {
-        return this.$scrollTo(".error--text", 500, {
-          container: ".create-invoice",
-          offset: -200,
+        Promise.resolve().then(() => {
+          this.$scrollTo(".error--text", 500, {
+            container: ".create-invoice",
+            offset: -200,
+          });
         });
+        return (this.text_error = `- All fields must be added`);
       }
 
       if (this.saveMode) {
@@ -713,5 +719,15 @@ export default {
   &:hover {
     color: $warning !important;
   }
+}
+
+.text__error {
+  color: $warning;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#input-88 {
+  cursor: pointer !important;
 }
 </style>

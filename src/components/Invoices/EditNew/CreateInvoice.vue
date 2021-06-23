@@ -11,13 +11,19 @@
           mobile-breakpoint="0"
           fullscreen
           @keydown.esc="goHome"
-          @click:outside="goHome"
+          v-click-outside="{
+            handler: goHome,
+            include: include,
+          }"
         >
           <div class="createInvoice">
             <GoBackBtn class="goback-invoice" />
             <Form />
           </div>
         </v-dialog>
+        <v-icon class="close_createInvoice" title="Close (Esc)" @click="goHome">
+          mdi-close
+        </v-icon>
       </v-overlay>
     </v-fade-transition>
   </section>
@@ -36,6 +42,15 @@ export default {
   computed: {
     saveMode() {
       return this.$route.name === "sku-new";
+    },
+  },
+
+  methods: {
+    include() {
+      return [
+        document.querySelector(".navbar"),
+        document.querySelector(".createInvoice"),
+      ];
     },
   },
 
@@ -58,7 +73,7 @@ export default {
 </script>
 <style lang="scss">
 @import "@/styles/import";
-
+@import "@/styles/colors.scss";
 .create-invoice {
   border-radius: 0rem !important;
   opacity: 1 !important;
@@ -66,7 +81,7 @@ export default {
   background-color: #141625 !important;
 
   .goback-invoice {
-    @include media(">md") {
+    @include media(">=md") {
       margin: 2rem 0;
       min-height: 3rem;
       display: none;
@@ -138,6 +153,50 @@ export default {
     }
     &:nth-child(2) {
       max-width: 138px !important;
+    }
+  }
+}
+
+.v-overlay__content {
+  width: 100%;
+  height: 100%;
+
+  .close_createInvoice {
+    @include media(">=md") {
+      position: absolute !important;
+      top: 100px !important;
+      right: 3.2rem !important;
+      font-size: 2rem !important;
+      transition: all 0.3s ease;
+      background-color: $dark_500;
+      border-radius: 50%;
+      padding: 0.5rem;
+
+      .theme--light & {
+        background-color: $light-bg;
+        color: $dark-blue-gray;
+      }
+
+      &:hover {
+        color: $light-blue-gray;
+        background-color: $dark_300;
+        transform: rotate(90deg);
+
+        .theme--light & {
+          background-color: $blue-gray;
+          color: white;
+        }
+      }
+    }
+
+    @include media(">=lg") {
+      top: 0 !important;
+      right: 0 !important;
+      margin: 1.5rem 3rem;
+    }
+
+    @include media("<=md") {
+      display: none;
     }
   }
 }

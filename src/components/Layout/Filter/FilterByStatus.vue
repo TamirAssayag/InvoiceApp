@@ -57,13 +57,12 @@ import "./filter.scss";
 import { mapActions } from "vuex";
 export default {
   name: "FilterByStatus",
-  data() {
-    return {
-      status: null,
-      items: ["paid", "pending", "draft"],
-      checkedItems: "",
-    };
-  },
+  data: () => ({
+    status: null,
+    items: ["paid", "pending", "draft"],
+    checkedItems: "",
+  }),
+
   methods: {
     ...mapActions({
       filter: "invoices/updateFilter",
