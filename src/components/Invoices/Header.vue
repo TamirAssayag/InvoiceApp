@@ -46,18 +46,20 @@ export default {
       if (this.invoicesByFilter.length) {
         if (
           !this.$vuetify.breakpoint.xs &&
-          !this.$vuetify.breakpoint.sm & (this.filter === "all")
+          !this.$vuetify.breakpoint.sm & this.noFilters
         ) {
           return `There are ${this.invoicesByFilter.length} total Invoices`;
         } else {
-          if (this.filter === "all") {
+          if (this.noFilters) {
             return `${this.invoicesByFilter.length} Invoices`;
           } else {
-            return `${this.invoicesByFilter.length} ${this.filter} Invoices`;
+            return `${this.invoicesByFilter.length} ${Object.values(
+              this.activeFilters
+            ).join(", ")} Invoices`;
           }
         }
       } else {
-        return `No ${this.filter !== "all" ? this.filter : ""} Invoices`;
+        return `No ${!this.noFilters ? this.filter : ""} Invoices`;
       }
     },
   },

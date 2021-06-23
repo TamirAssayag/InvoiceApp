@@ -1,3 +1,5 @@
+import { mapGetters } from "vuex";
+
 export default {
   methods: {
     goHome() {
@@ -14,6 +16,17 @@ export default {
       let sum = 0;
       items.forEach((item) => (sum += item.total));
       return sum;
+    },
+  },
+  computed: {
+    ...mapGetters({ filters: "invoices/getFilter" }),
+    noFilters() {
+      return !Object.values(this.filters).some(Boolean);
+    },
+    activeFilters() {
+      return Object.entries(this.filters)
+        .filter(([, v]) => v)
+        .map(([k]) => k);
     },
   },
 };

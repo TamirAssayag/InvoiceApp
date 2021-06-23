@@ -1,6 +1,6 @@
 const state = {
   invoices: [],
-  filter: "all",
+  filter: [],
 };
 
 const mutations = {
@@ -68,8 +68,14 @@ const getters = {
   },
   getFilter: (state) => state.filter,
   invoicesByFilter: (state) => {
-    if (state.filter === "all") return state.invoices;
-    return state.invoices.filter((invoice) => state.filter === invoice.status);
+    const noFilters = !Object.values(state.filter).some(Boolean);
+    if (noFilters) return state.invoices;
+
+    return state.invoices.filter((invoice) =>
+      Object.entries(state.filter).some(
+        ([key, value]) => key === invoice.status && value
+      )
+    );
   },
 };
 

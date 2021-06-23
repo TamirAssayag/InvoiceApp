@@ -46,16 +46,3 @@ export default {
     },
   },
 };
-// created() {
-//   const emptyInvoice = this.recursiveClearValues(this.invoices[0]);
-
-//   if (this.saveMode) {
-//     this.newInvoice = {
-//       ...emptyInvoice,
-//       id: Math.random().toString(36).substring(7).toUpperCase(),
-//       status: "pending",
-//     };
-//   } else {
-//     this.newInvoice = cloneDeep(this.invoice);
-//   }
-// },

@@ -40,6 +40,7 @@ input {
   overflow-y: hidden;
   overflow-x: hidden;
   max-height: 100vh;
+  padding-right: 4px;
 }
 
 input:-webkit-autofill,
@@ -75,4 +76,8 @@ select:-webkit-autofill:focus {
   @include media(">md") {
     display: none !important;
   }
+}
+
+.mdi-checkbox-blank-outline::before {
+  color: $purple-500;
 }

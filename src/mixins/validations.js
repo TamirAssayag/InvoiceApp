@@ -6,7 +6,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -16,7 +16,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -26,7 +26,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -36,7 +36,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -46,7 +46,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -56,7 +56,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -65,7 +65,7 @@ export default {
       const $v = this.$v.newInvoice.clientEmail;
       if (!$v.$dirty) return errors;
       !$v.email && errors.push("Must be valid e-mail");
-      !$v.required && errors.push("E-mail can't be empty");
+      !$v.required && errors.push("E-mail required");
       return errors;
     },
     clientCityError() {
@@ -74,7 +74,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -84,7 +84,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -94,7 +94,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -104,7 +104,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -114,7 +114,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -124,7 +124,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -139,7 +139,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -149,7 +149,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },
@@ -159,7 +159,7 @@ export default {
       if (!$v.$dirty) {
         return errors;
       } else {
-        !$v.required && errors.push("can't be empty");
+        !$v.required && errors.push("required");
       }
       return errors;
     },

@@ -1,7 +1,7 @@
 <template>
   <section>
-    <v-fade-transition>
-      <v-overlay v-if="isOpen" :opacity="0.6" z-index="100" color="black">
+    <v-fade-transition appear>
+      <v-overlay :opacity="0.6" z-index="100" color="black">
         <v-dialog
           v-model="isOpen"
           no-click-animation

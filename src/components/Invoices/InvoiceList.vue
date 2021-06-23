@@ -66,10 +66,6 @@ export default {
     directToInvoice(id) {
       this.$router.push({ name: "sku", params: { id } });
     },
-    updateByStatus(status) {
-      if (this.filter === "all") return true;
-      return this.filter === status;
-    },
   },
 };
 </script>

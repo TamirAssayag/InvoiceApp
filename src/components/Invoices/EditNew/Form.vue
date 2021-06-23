@@ -26,36 +26,38 @@
               v-model="newInvoice.senderAddress.street"
             />
 
-            <div class="input--flex">
-              <div class="input-row">
-                <label for="city">City</label>
-                <v-text-field
-                  dense
-                  rounded
-                  type="text"
-                  name="city"
-                  required
-                  :error-messages="cityFieldError"
-                  @focus="reset('senderAddress.city')"
-                  @blur="touch('senderAddress.city')"
-                  v-model="newInvoice.senderAddress.city"
-                />
+            <div class="input--flex in-row">
+              <div class="input--flex">
+                <div class="input-row">
+                  <label for="city">City</label>
+                  <v-text-field
+                    dense
+                    rounded
+                    type="text"
+                    name="city"
+                    required
+                    :error-messages="cityFieldError"
+                    @focus="reset('senderAddress.city')"
+                    @blur="touch('senderAddress.city')"
+                    v-model="newInvoice.senderAddress.city"
+                  />
+                </div>
+                <div class="input-column">
+                  <label for="post-code">Post Code</label>
+                  <v-text-field
+                    :error-messages="postCodeError"
+                    dense
+                    rounded
+                    name="post-code"
+                    type="text"
+                    required
+                    @focus="reset('senderAddress.postCode')"
+                    @blur="touch('senderAddress.postCode')"
+                    v-model="newInvoice.senderAddress.postCode"
+                  />
+                </div>
               </div>
-              <div class="input-column">
-                <label for="post-code">Post Code</label>
-                <v-text-field
-                  :error-messages="postCodeError"
-                  dense
-                  rounded
-                  name="post-code"
-                  type="text"
-                  required
-                  @focus="reset('senderAddress.postCode')"
-                  @blur="touch('senderAddress.postCode')"
-                  v-model="newInvoice.senderAddress.postCode"
-                />
-              </div>
-              <div class="d-desktop flex-1">
+              <div class="input--flex">
                 <div class="input-column">
                   <label for="country">Country</label>
                   <v-text-field
@@ -71,20 +73,6 @@
                   />
                 </div>
               </div>
-            </div>
-            <div class="d-mobile" style="width: 100%">
-              <label for="country">Country</label>
-              <v-text-field
-                dense
-                rounded
-                name="country"
-                type="text"
-                required
-                :error-messages="countryError"
-                @focus="reset('senderAddress.country')"
-                @blur="touch('senderAddress.country')"
-                v-model="newInvoice.senderAddress.country"
-              />
             </div>
           </div>
 
@@ -129,36 +117,38 @@
                 v-model="newInvoice.clientAddress.street"
               />
 
-              <div class="input--flex">
-                <div class="input-row">
-                  <label for="city">City</label>
-                  <v-text-field
-                    dense
-                    rounded
-                    type="text"
-                    name="city"
-                    required
-                    :error-messages="clientCityError"
-                    @focus="reset('clientAddress.city')"
-                    @blur="touch('clientAddress.city')"
-                    v-model="newInvoice.clientAddress.city"
-                  />
+              <div class="input--flex in-row">
+                <div class="input--flex">
+                  <div class="input-row">
+                    <label for="city">City</label>
+                    <v-text-field
+                      dense
+                      rounded
+                      type="text"
+                      name="city"
+                      required
+                      :error-messages="clientCityError"
+                      @focus="reset('clientAddress.city')"
+                      @blur="touch('clientAddress.city')"
+                      v-model="newInvoice.clientAddress.city"
+                    />
+                  </div>
+                  <div class="input-column">
+                    <label for="post-code">Post Code</label>
+                    <v-text-field
+                      dense
+                      rounded
+                      name="post-code"
+                      type="text"
+                      required
+                      :error-messages="clientPostCodeError"
+                      @focus="reset('clientAddress.postCode')"
+                      @blur="touch('clientAddress.postCode')"
+                      v-model="newInvoice.clientAddress.postCode"
+                    />
+                  </div>
                 </div>
-                <div class="input-column">
-                  <label for="post-code">Post Code</label>
-                  <v-text-field
-                    dense
-                    rounded
-                    name="post-code"
-                    type="text"
-                    required
-                    :error-messages="clientPostCodeError"
-                    @focus="reset('clientAddress.postCode')"
-                    @blur="touch('clientAddress.postCode')"
-                    v-model="newInvoice.clientAddress.postCode"
-                  />
-                </div>
-                <div class="d-desktop flex-1">
+                <div class="input--flex">
                   <div class="input-column">
                     <label for="country">Country</label>
                     <v-text-field
@@ -175,27 +165,13 @@
                   </div>
                 </div>
               </div>
-              <div class="d-mobile" style="width: 100%">
-                <label for="country">Country</label>
-                <v-text-field
-                  dense
-                  rounded
-                  name="country"
-                  type="text"
-                  required
-                  :error-messages="clientCountryError"
-                  @focus="reset('clientAddress.country')"
-                  @blur="touch('clientAddress.country')"
-                  v-model="newInvoice.clientAddress.country"
-                />
-              </div>
             </div>
           </div>
         </section>
 
-        <section class="date--section d-desktop">
-          <div class="createInvoice--form d-desktop">
-            <div class="input--flex">
+        <section class="date--section">
+          <div class="createInvoice--form">
+            <div class="input--flex in-row">
               <div class="input--column flex-1">
                 <label for="Invoice-date">Invoice Date</label>
                 <v-menu
@@ -205,10 +181,10 @@
                   max-width="290px"
                   min-width="290px"
                   attach
+                  :nudge-right="$vuetify.breakpoint.xs ? 15 : 0"
                 >
                   <template v-slot:activator="{ on }">
                     <v-text-field
-                      class="d-desktop"
                       style="cursor: pointer"
                       readonly
                       :color="
@@ -225,11 +201,7 @@
                       :value="getDate(newInvoice.createdAt)"
                     ></v-text-field>
                   </template>
-                  <v-date-picker
-                    class="d-desktop"
-                    v-model="newInvoice.createdAt"
-                    no-title
-                  >
+                  <v-date-picker v-model="newInvoice.createdAt" no-title>
                   </v-date-picker>
                 </v-menu>
               </div>
@@ -282,87 +254,6 @@
           </div>
         </section>
 
-        <section class="date--section d-mobile">
-          <div class="createInvoice--form">
-            <label for="Invoice-date">Invoice Date</label>
-            <v-menu
-              :close-on-content-click="false"
-              :nudge-bottom="1"
-              :nudge-right="17"
-              transition="scroll-y-transition"
-              offset-y
-              max-width="290px"
-              min-width="290px"
-              class="d-mobile"
-              attach
-            >
-              <template v-slot:activator="{ on }">
-                <v-text-field
-                  readonly
-                  style="cursor: pointer"
-                  :color="
-                    $vuetify.theme.dark ? textFieldColor[0] : textFieldColor[1]
-                  "
-                  v-on="on"
-                  append-icon="mdi-calendar"
-                  required
-                  :error-messages="createdAtError"
-                  @focus="reset('createdAt')"
-                  @blur="touch('createdAt')"
-                  :value="getDate(newInvoice.createdAt)"
-                ></v-text-field>
-              </template>
-              <v-date-picker
-                class="d-mobile"
-                v-model="newInvoice.createdAt"
-                no-title
-              >
-              </v-date-picker>
-            </v-menu>
-
-            <label for="payment-terms">Payment Terms</label>
-
-            <v-select
-              append-icon="mdi-chevron-down"
-              :items="net"
-              required
-              :item-text="(i) => `Net ${i} Days`"
-              :menu-props="{
-                transition: 'scroll-y-transition',
-                top: false,
-                offsetY: true,
-              }"
-              attach
-              :color="
-                $vuetify.theme.dark ? textFieldColor[0] : textFieldColor[1]
-              "
-              :error-messages="paymentTermsError"
-              @focus="reset('paymentTerms')"
-              @blur="touch('paymentTerms')"
-              v-model="newInvoice.paymentTerms"
-            >
-              <template v-slot:item="{ item }">Net {{ item }} Days</template>
-              <template v-slot:selection="{ item }"
-                ><b>Net {{ item }} Days</b></template
-              >
-            </v-select>
-
-            <label for="description">Project Description</label>
-            <v-text-field
-              dense
-              rounded
-              type="text"
-              id="description"
-              name="description"
-              required
-              :error-messages="descriptionError"
-              @focus="reset('description')"
-              @blur="touch('description')"
-              v-model="newInvoice.description"
-            />
-          </div>
-        </section>
-
         <h4 class="item--list__title">Item List</h4>
         <v-scroll-y-reverse-transition
           appear
@@ -385,7 +276,7 @@
                 :error-messages="itemNameErrorMessages(index)"
               />
 
-              <div class="input--flex">
+              <div class="input--flex" style="width: 100%">
                 <div class="input-row">
                   <label :for="`quantity-${index}`">Qty.</label>
                   <v-text-field
