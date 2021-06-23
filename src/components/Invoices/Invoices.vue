@@ -27,19 +27,19 @@ export default {
 <style lang="scss">
 @import "@/styles/import";
 .invoices {
-  @include media(">lg") {
+  @include media(">=lg") {
     padding: 0 15rem;
     margin: 0 0 0 3.6rem;
   }
 
-  @include media(">xl") {
+  @include media(">=xl") {
     margin: 0 auto;
     width: 120em;
     padding: 0 10rem;
   }
   .container {
     padding: 0 1.5rem !important;
-    min-height: 768px;
+    min-height: calc(100vh - 196px);
     width: 100%;
   }
 }
