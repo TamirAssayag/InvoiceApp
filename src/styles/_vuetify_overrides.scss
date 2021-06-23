@@ -23,7 +23,7 @@
 
   .v-picker {
     box-shadow: 0 1.9px 3.9px rgba(0, 0, 0, 0.035),
-      0 15px 31px rgba(0, 0, 0, 0.07);
+      0 15px 31px rgba(0, 0, 0, 0.07) !important;
 
     .theme--light & {
       background-color: white !important;
@@ -358,4 +358,8 @@
 
 .v-input--is-focused {
   border: 1px solid $purple-500 !important;
+
+  .theme--light & {
+    border: 1px solid $purple-500 !important;
+  }
 }

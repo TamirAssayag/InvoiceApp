@@ -325,7 +325,6 @@
             <v-select
               append-icon="mdi-chevron-down"
               :items="net"
-              dense
               required
               :item-text="(i) => `Net ${i} Days`"
               :menu-props="{

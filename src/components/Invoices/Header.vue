@@ -147,6 +147,11 @@ export default {
       line-height: 1.25;
       letter-spacing: -0.25px;
       padding: 0 0rem 0 0.4rem !important;
+      transition: all 0.3s ease !important;
+
+      &:hover {
+        background-color: $purple_400;
+      }
 
       @include media(">md") {
         padding: 0.5rem 0.93rem 0.5rem 0.5rem !important;
