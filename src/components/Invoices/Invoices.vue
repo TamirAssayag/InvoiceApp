@@ -39,7 +39,7 @@ export default {
   }
   .container {
     padding: 0 1.5rem !important;
-    // min-height: 100vh;
+    min-height: 768px;
     width: 100%;
   }
 }

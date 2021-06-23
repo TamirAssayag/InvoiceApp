@@ -61,13 +61,13 @@ export default {
   },
 
   created() {
-    document.querySelector("body").classList.add("popup-open");
-    document.querySelector("html").classList.add("popup-open");
+    document.querySelector("body").classList.add("modal-open");
+    document.querySelector("html").classList.add("modal-open");
   },
 
   destroyed() {
-    document.querySelector("body").classList.remove("popup-open");
-    document.querySelector("html").classList.remove("popup-open");
+    document.querySelector("body").classList.remove("modal-open");
+    document.querySelector("html").classList.remove("modal-open");
   },
 };
 </script>
