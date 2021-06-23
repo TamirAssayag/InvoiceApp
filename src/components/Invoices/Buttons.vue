@@ -16,6 +16,7 @@ export default {
 
 <style lang="scss">
 @import "@/styles/colors.scss";
+@import "@/styles/import";
 .invoice--buttons__container {
   width: 100%;
   background-color: $dark-300;

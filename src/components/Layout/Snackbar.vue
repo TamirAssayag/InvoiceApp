@@ -5,8 +5,15 @@
         {{ text }}
       </template>
       <template v-slot:action="{ attrs }">
-        <v-btn color="indigo" text v-bind="attrs" @click="$emit('input')">
-          Close
+        <v-btn
+          icon
+          small
+          color="indigo"
+          text
+          v-bind="attrs"
+          @click="$emit('input')"
+        >
+          X
         </v-btn>
       </template>
     </v-snackbar>
@@ -24,17 +31,19 @@ export default {
 
 <style lang="scss">
 .v-snack {
-  &:not(.v-snack--centered):not(.v-snack--top) {
-    // margin-bottom: 2rem !important;
+  .v-btn__content {
+    color: rgb(230, 230, 230) !important;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 12px;
   }
   &__wrapper {
-    width: 100%;
-    height: 91px;
+    width: 50%;
+    height: 80px;
     color: white !important;
     background-color: #363b5c !important;
     box-shadow: none !important;
-    border-bottom-left-radius: unset !important;
-    border-bottom-right-radius: unset !important;
+    border-radius: 1rem !important;
 
     .theme--light & {
       color: #373b53 !important;

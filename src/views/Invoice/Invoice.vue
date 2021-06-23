@@ -188,11 +188,11 @@
 
 <script>
 import "./invoice.scss";
-import Status from "../../components/Invoices/Status.vue";
-import GoBackBtn from "../../components/Layout/GoBackBtn.vue";
+import Status from "@/components/Invoices/Status.vue";
+import GoBackBtn from "@/components/Layout/GoBackBtn.vue";
+import Modal from "@/components/Layout/Modal.vue";
+import Buttons from "@/components/Invoices/Buttons.vue";
 import { mapActions } from "vuex";
-import Modal from "../../components/Layout/Modal.vue";
-import Buttons from "../../components/Invoices/Buttons.vue";
 export default {
   components: { Status, GoBackBtn, Modal, Buttons },
   name: "Invoice",

@@ -8,8 +8,8 @@
 
 <script>
 import data from "@/json/data.json";
-import Layout from "./components/Layout/Layout.vue";
-import Snackbar from "./components/Layout/Snackbar.vue";
+import Layout from "@/components/Layout/Layout.vue";
+import Snackbar from "@/components/Layout/Snackbar.vue";
 import { mapActions } from "vuex";
 export default {
   components: { Layout, Snackbar },

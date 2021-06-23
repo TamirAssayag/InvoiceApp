@@ -55,19 +55,37 @@
                   v-model="newInvoice.senderAddress.postCode"
                 />
               </div>
+              <div class="d-desktop flex-1">
+                <div class="input-column">
+                  <label for="country">Country</label>
+                  <v-text-field
+                    dense
+                    rounded
+                    name="country"
+                    type="text"
+                    required
+                    :error-messages="countryError"
+                    @focus="reset('senderAddress.country')"
+                    @blur="touch('senderAddress.country')"
+                    v-model="newInvoice.senderAddress.country"
+                  />
+                </div>
+              </div>
             </div>
-            <label for="country">Country</label>
-            <v-text-field
-              dense
-              rounded
-              name="country"
-              type="text"
-              required
-              :error-messages="countryError"
-              @focus="reset('senderAddress.country')"
-              @blur="touch('senderAddress.country')"
-              v-model="newInvoice.senderAddress.country"
-            />
+            <div class="d-mobile" style="width: 100%">
+              <label for="country">Country</label>
+              <v-text-field
+                dense
+                rounded
+                name="country"
+                type="text"
+                required
+                :error-messages="countryError"
+                @focus="reset('senderAddress.country')"
+                @blur="touch('senderAddress.country')"
+                v-model="newInvoice.senderAddress.country"
+              />
+            </div>
           </div>
 
           <div class="bill--form">
@@ -140,36 +158,144 @@
                     v-model="newInvoice.clientAddress.postCode"
                   />
                 </div>
+                <div class="d-desktop flex-1">
+                  <div class="input-column">
+                    <label for="country">Country</label>
+                    <v-text-field
+                      dense
+                      rounded
+                      name="country"
+                      type="text"
+                      required
+                      :error-messages="clientCountryError"
+                      @focus="reset('clientAddress.country')"
+                      @blur="touch('clientAddress.country')"
+                      v-model="newInvoice.clientAddress.country"
+                    />
+                  </div>
+                </div>
               </div>
-
-              <label for="country">Country</label>
-              <v-text-field
-                dense
-                rounded
-                name="country"
-                type="text"
-                required
-                :error-messages="clientCountryError"
-                @focus="reset('clientAddress.country')"
-                @blur="touch('clientAddress.country')"
-                v-model="newInvoice.clientAddress.country"
-              />
+              <div class="d-mobile" style="width: 100%">
+                <label for="country">Country</label>
+                <v-text-field
+                  dense
+                  rounded
+                  name="country"
+                  type="text"
+                  required
+                  :error-messages="clientCountryError"
+                  @focus="reset('clientAddress.country')"
+                  @blur="touch('clientAddress.country')"
+                  v-model="newInvoice.clientAddress.country"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="date--section">
+        <section class="date--section d-desktop">
+          <div class="createInvoice--form d-desktop">
+            <div class="input--flex">
+              <div class="input--column flex-1">
+                <label for="Invoice-date">Invoice Date</label>
+                <v-menu
+                  v-model="modal"
+                  :close-on-content-click="false"
+                  transition="scroll-y-transition"
+                  offset-y
+                  max-width="290px"
+                  min-width="290px"
+                  attach
+                >
+                  <template v-slot:activator="{ on }">
+                    <v-text-field
+                      class="d-desktop"
+                      readonly
+                      :color="
+                        $vuetify.theme.dark
+                          ? textFieldColor[0]
+                          : textFieldColor[1]
+                      "
+                      v-on="on"
+                      append-icon="mdi-calendar"
+                      required
+                      :error-messages="createdAtError"
+                      @focus="reset('createdAt')"
+                      @blur="touch('createdAt')"
+                      :value="getDate(newInvoice.createdAt)"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    class="d-desktop"
+                    v-model="newInvoice.createdAt"
+                    no-title
+                  >
+                  </v-date-picker>
+                </v-menu>
+              </div>
+
+              <div class="input--column flex-1">
+                <label for="payment-terms">Payment Terms</label>
+
+                <v-select
+                  append-icon="mdi-chevron-down"
+                  :items="net"
+                  required
+                  attach
+                  :item-text="(i) => `Net ${i} Days`"
+                  :menu-props="{
+                    transition: 'scroll-y-transition',
+                    top: false,
+                    offsetY: true,
+                  }"
+                  :color="
+                    $vuetify.theme.dark ? textFieldColor[0] : textFieldColor[1]
+                  "
+                  :error-messages="paymentTermsError"
+                  @focus="reset('paymentTerms')"
+                  @blur="touch('paymentTerms')"
+                  v-model="newInvoice.paymentTerms"
+                >
+                  <template v-slot:item="{ item }"
+                    >Net {{ item }} Days</template
+                  >
+                  <template v-slot:selection="{ item }"
+                    ><b>Net {{ item }} Days</b></template
+                  >
+                </v-select>
+              </div>
+            </div>
+
+            <label for="description">Project Description</label>
+            <v-text-field
+              dense
+              rounded
+              type="text"
+              id="description"
+              name="description"
+              required
+              :error-messages="descriptionError"
+              @focus="reset('description')"
+              @blur="touch('description')"
+              v-model="newInvoice.description"
+            />
+          </div>
+        </section>
+
+        <section class="date--section d-mobile">
           <div class="createInvoice--form">
             <label for="Invoice-date">Invoice Date</label>
-
             <v-menu
               v-model="modal"
               :close-on-content-click="false"
-              :nudge-right="15"
+              :nudge-bottom="1"
+              :nudge-right="17"
               transition="scroll-y-transition"
               offset-y
               max-width="290px"
               min-width="290px"
+              class="d-mobile"
+              attach
             >
               <template v-slot:activator="{ on }">
                 <v-text-field
@@ -186,7 +312,11 @@
                   :value="getDate(newInvoice.createdAt)"
                 ></v-text-field>
               </template>
-              <v-date-picker v-model="newInvoice.createdAt" no-title>
+              <v-date-picker
+                class="d-mobile"
+                v-model="newInvoice.createdAt"
+                no-title
+              >
               </v-date-picker>
             </v-menu>
 
@@ -198,7 +328,12 @@
               dense
               required
               :item-text="(i) => `Net ${i} Days`"
-              :menu-props="{ transition: 'scroll-y-transition' }"
+              :menu-props="{
+                transition: 'scroll-y-transition',
+                top: false,
+                offsetY: true,
+              }"
+              attach
               :color="
                 $vuetify.theme.dark ? textFieldColor[0] : textFieldColor[1]
               "
@@ -213,12 +348,13 @@
               >
             </v-select>
 
-            <label for="street-address">Project / Description</label>
+            <label for="description">Project Description</label>
             <v-text-field
               dense
               rounded
               type="text"
-              name="Description"
+              id="description"
+              name="description"
               required
               :error-messages="descriptionError"
               @focus="reset('description')"
@@ -254,6 +390,11 @@
                 <div class="input-row">
                   <label :for="`quantity-${index}`">Qty.</label>
                   <v-text-field
+                    :color="
+                      $vuetify.theme.dark
+                        ? textFieldColor[0]
+                        : textFieldColor[1]
+                    "
                     type="number"
                     :id="`quantity-${index}`"
                     name="quantity"
@@ -277,6 +418,11 @@
                 <div class="input-column">
                   <label :for="`item-price-${index}`">Price</label>
                   <v-text-field
+                    :color="
+                      $vuetify.theme.dark
+                        ? textFieldColor[0]
+                        : textFieldColor[1]
+                    "
                     :id="`item-price-${index}`"
                     min="0"
                     maxlength="9999"
@@ -306,17 +452,14 @@
                   </div>
                 </div>
                 <div class="input-row grow-0">
-                  <div class="trash-icon">
-                    <v-btn
-                      plain
-                      icon
-                      elevation="0"
-                      color="transparent"
-                      @click="deleteItem(index)"
-                    >
-                      <inline-svg :src="getImageUrl('icon-delete.svg')" />
-                    </v-btn>
-                  </div>
+                  <v-btn
+                    icon
+                    elevation="0"
+                    color="transparent"
+                    @click="deleteItem(index)"
+                  >
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
                 </div>
               </div>
             </div>
@@ -335,11 +478,10 @@
         >
       </div>
     </div>
-    <Buttons>
+    <Buttons class="created-invoice__buttons">
       <v-btn elevation="0" color="#252945" rounded @click="$router.go(-1)">{{
         saveMode ? "Discard" : "Cancel"
       }}</v-btn>
-
       <v-btn
         v-if="$route.name === 'sku-new'"
         elevation="0"
@@ -465,7 +607,6 @@ export default {
     }),
     handleSaveChanges() {
       this.$v.$touch();
-      console.log(this.$v);
       if (this.$v.$invalid) {
         return this.$scrollTo(".error--text", 500, {
           container: ".create-invoice",
@@ -532,6 +673,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/colors.scss";
+
 #edited-form {
   .v-text-field--rounded {
     border-radius: 4px !important;
@@ -544,5 +687,31 @@ export default {
 
 .save {
   max-width: 111px !important;
+}
+
+.created-invoice__buttons {
+  display: flex !important;
+  .v-btn {
+    transition: all 0.2s ease;
+    &:nth-child(2) {
+      &:hover {
+        background-color: $dark_500 !important;
+      }
+    }
+    &:nth-child(3) {
+      &:hover {
+        background-color: $purple_400 !important;
+      }
+    }
+  }
+}
+
+.mdi-delete {
+  transition: all 0.3s ease !important;
+  color: $blue-gray !important;
+
+  &:hover {
+    color: $warning !important;
+  }
 }
 </style>

@@ -25,6 +25,10 @@ input {
   flex: 0;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
 .text-elipsis {
   min-width: 48px;
   text-overflow: ellipsis;
@@ -62,23 +66,13 @@ select:-webkit-autofill:focus {
 .d-desktop {
   display: block;
   @include media("<md") {
-    display: none;
+    display: none !important;
   }
 }
 
 .d-mobile {
   display: block;
   @include media(">md") {
-    display: none;
-  }
-}
-
-.v-data-table > .v-data-table__wrapper > table > tbody > tr > td,
-.v-data-table > .v-data-table__wrapper > table > thead > tr > td,
-.v-data-table > .v-data-table__wrapper > table > tfoot > tr > td {
-  background-color: $dark-200 !important;
-
-  .theme--light & {
-    background-color: transparent !important;
+    display: none !important;
   }
 }

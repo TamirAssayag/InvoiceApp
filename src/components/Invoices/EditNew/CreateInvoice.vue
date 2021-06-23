@@ -14,7 +14,7 @@
           @click:outside="goHome"
         >
           <div class="createInvoice">
-            <GoBackBtn />
+            <GoBackBtn class="goback-invoice" />
             <Form />
           </div>
         </v-dialog>
@@ -63,11 +63,56 @@ export default {
   border-radius: 0rem !important;
   opacity: 1 !important;
   max-width: 100% !important;
-  max-height: 100% !important;
   background-color: #141625 !important;
 
-  @include media(">md") {
+  .goback-invoice {
+    @include media(">md") {
+      margin: 2rem 0;
+      min-height: 3rem;
+      display: none;
+    }
+  }
+
+  .invoice--buttons__container {
+    @include media(">=md") {
+      position: fixed !important;
+      bottom: 0;
+      max-width: 712px;
+      height: 110px;
+      border-top-right-radius: 1rem;
+      border-top-left-radius: 1rem;
+    }
+
+    @include media(">=lg") {
+      position: unset !important;
+      box-shadow: none !important;
+      background-color: unset !important;
+      align-items: flex-start;
+      height: 80px;
+    }
+
+    .invoice--buttons {
+      @include media(">md") {
+        justify-content: flex-end;
+      }
+    }
+    .invoice--buttons__wrapper {
+      @include media(">md") {
+        padding: 0 3.5rem;
+      }
+    }
+  }
+
+  @include media(">=md") {
     max-width: 719px !important;
+    top: 80px !important;
+    max-height: calc(100% - 80px) !important;
+  }
+
+  @include media(">=lg") {
+    max-width: 719px !important;
+    max-height: 100% !important;
+    top: 0 !important;
   }
 
   .theme--light & {

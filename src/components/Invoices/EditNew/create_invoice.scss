@@ -1,18 +1,28 @@
 @import "@/styles/colors.scss";
+@import "@/styles/import";
 
 .createInvoice {
   .theme--light & {
     background-color: white !important;
   }
+
   &--wrapper {
     padding: 0 1.5rem;
+    position: relative !important;
 
-    @media screen and (min-width: 768px) {
+    @include media(">md") {
+      padding: 0 3.5rem;
       margin-top: 1.5rem;
+      margin-bottom: 7rem !important;
     }
 
-    @media screen and (min-width: 1440px) {
-      padding: 0 56px;
+    @include media(">=lg") {
+      padding: 0 3.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: unset !important;
+    }
+
+    @include media(">=lg") {
       margin-top: 2.5rem;
     }
 
@@ -25,7 +35,6 @@
         line-height: 1.78;
         color: #777f98;
         margin-bottom: 1rem;
-        // margin: 4.2rem 0 1.5rem;
       }
 
       &__form {
@@ -41,6 +50,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-top: 1.5rem;
       .from,
       .to {
         font-size: 12px;
@@ -131,12 +141,7 @@
         line-height: 1.25;
         letter-spacing: -0.25px;
         color: $blue-gray;
-        margin-top: 1rem;
         text-align: center;
-      }
-
-      .trash-icon {
-        margin-top: 0.8rem;
       }
     }
   }

@@ -32,7 +32,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import FilterByStatus from "../Layout/FilterByStatus.vue";
+import FilterByStatus from "../Layout/Filter/FilterByStatus.vue";
 export default {
   components: { FilterByStatus },
   name: "Invoices",

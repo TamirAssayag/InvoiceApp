@@ -31,11 +31,6 @@ export default {
   align-items: center;
   padding: 0 1.5rem;
 
-  @include media(">lg") {
-    margin: 2rem 0;
-    min-height: 3rem;
-  }
-
   .goback--button {
     display: flex;
     align-items: center;

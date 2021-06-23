@@ -295,11 +295,7 @@
 }
 
 .v-data-table {
-  background-color: $dark-200 !important;
-
-  .theme--light & {
-    background-color: transparent !important;
-  }
+  background-color: transparent !important;
 
   td {
     padding: 0 !important;
@@ -321,7 +317,7 @@
 
   tr {
     &:hover {
-      background-color: unset !important;
+      background-color: transparent !important;
     }
   }
 
@@ -346,8 +342,14 @@
   }
 }
 
+.v-data-table > .v-data-table__wrapper > table > tbody > tr > td,
+.v-data-table > .v-data-table__wrapper > table > thead > tr > td,
+.v-data-table > .v-data-table__wrapper > table > tfoot > tr > td {
+  background-color: transparent !important;
+}
+
 .v-menu__content {
-  border-radius: 1rem !important;
+  border-radius: 8px !important;
 
   .theme--light & {
     box-shadow: 0 10px 20px 0 rgba(72, 84, 159, 0.25) !important;
