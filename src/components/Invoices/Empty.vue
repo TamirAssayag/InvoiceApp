@@ -31,7 +31,7 @@ export default {
   align-items: center;
 
   @include media(">md") {
-    height: calc(100vh - 88px);
+    height: calc(100vh - 196px);
   }
 
   &--illustration {
