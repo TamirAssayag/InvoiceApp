@@ -9,9 +9,6 @@
 .navbar {
   position: relative;
   z-index: 200;
-  // padding: 0 0.7rem 0 0;
-  // overflow: hidden !important;
-  transition: 0.3s all ease !important;
 
   @include media(">=lg") {
     position: absolute;
@@ -120,14 +117,14 @@
     }
 
     .logo {
-      transition: 0.2s all ease;
+      transition: 0.1s all ease;
       z-index: 200;
     }
 
     svg {
       width: 28px;
       height: 26px;
-      transition: all 0.3s ease;
+      transition: all 0.1s ease;
 
       @include media(">=md") {
         width: 31px;
