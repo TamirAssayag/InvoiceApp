@@ -6,7 +6,7 @@
         :key="invoice.id"
         @click="directToInvoice(invoice.id)"
       >
-        <section class="left">
+        <aside class="left">
           <ul class="invoice_information">
             <li class="invoice_id">
               <div class="hashtag">#</div>
@@ -19,28 +19,43 @@
             <li class="client_name d-desktop">
               {{ invoice.clientName }}
             </li>
-            <li class="fee text-elipsis d-mobile">
-              £
-              {{ (invoice.total = getTwoDigits(getGrandTotal(invoice.items))) }}
+            <li class="fee d-mobile">
+              <v-clamp :autoresize="false" :max-lines="1">
+                £
+                {{
+                  (invoice.total = getTwoDigits(getGrandTotal(invoice.items)))
+                }}
+              </v-clamp>
             </li>
           </ul>
-        </section>
+        </aside>
 
-        <section class="right">
+        <aside class="right">
           <ul class="invoice_information__half">
-            <li class="fee text-elipsis d-desktop">
-              £
-              {{ (invoice.total = getTwoDigits(getGrandTotal(invoice.items))) }}
+            <li class="fee d-desktop">
+              <v-clamp :autoresize="false" :max-lines="1">
+                £
+                {{
+                  (invoice.total = getTwoDigits(getGrandTotal(invoice.items)))
+                }}
+              </v-clamp>
             </li>
             <li class="client_name d-mobile">
               {{ invoice.clientName }}
             </li>
             <Status :data="invoice.status" />
-            <v-btn class="d-desktop" icon color="transparent" elevation="">
+            <v-btn
+              class="d-desktop"
+              icon
+              color="transparent"
+              elevation=""
+              :aria-label="`Invoice #${invoice.id}`"
+              :title="`Invoice #${invoice.id}`"
+            >
               <v-icon color="purple_500">mdi-chevron-right</v-icon>
             </v-btn>
           </ul>
-        </section>
+        </aside>
       </div>
     </template>
   </div>

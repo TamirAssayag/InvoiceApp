@@ -18,7 +18,7 @@
         >
           <div class="createInvoice">
             <GoBackBtn class="goback-invoice" />
-            <Form />
+            <Form @onCancel="goHome" />
           </div>
         </v-dialog>
         <v-icon class="close_createInvoice" title="Close (Esc)" @click="goHome">

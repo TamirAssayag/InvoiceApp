@@ -347,6 +347,8 @@
                     elevation="0"
                     color="transparent"
                     @click="deleteItem(index)"
+                    :aria-label="`Delete Item List`"
+                    :title="`Delete Item List`"
                   >
                     <v-icon>mdi-delete</v-icon>
                   </v-btn>
@@ -363,6 +365,8 @@
             :color="this.$vuetify.theme.dark ? btnColor[0] : btnColor[1]"
             rounded
             @click="addNewItem"
+            title="Add New Item"
+            aria-label="Add New Item"
             >+ Add New Item</v-btn
           >
           <p class="text__error mt-7">{{ text_error }}</p>
@@ -371,9 +375,16 @@
     </div>
 
     <Buttons class="created-invoice__buttons">
-      <v-btn elevation="0" color="#252945" rounded @click="$router.go(-1)">{{
-        saveMode ? "Discard" : "Cancel"
-      }}</v-btn>
+      <v-btn
+        elevation="0"
+        color="#252945"
+        :title="saveMode ? 'Discard' : 'Cancel'"
+        :aria-label="saveMode ? 'Discard' : 'Cancel'"
+        rounded
+        @click="$emit('onCancel')"
+      >
+        {{ saveMode ? "Discard" : "Cancel" }}
+      </v-btn>
       <v-btn
         v-if="$route.name === 'sku-new'"
         elevation="0"
@@ -383,6 +394,8 @@
         type="submit"
         id="draft"
         @click="newInvoice.status = 'draft'"
+        title="Draft"
+        aria-label="Draft"
         >Save as Draft</v-btn
       >
       <v-btn
@@ -392,6 +405,8 @@
         form="edited-form"
         type="submit"
         class="save"
+        :title="saveMode ? 'Save & Send' : 'Save Changes'"
+        :aria-label="saveMode ? 'Save & Send' : 'Save Changes'"
         >{{ saveMode ? "Save & Send" : "Save Changes" }}</v-btn
       >
     </Buttons>

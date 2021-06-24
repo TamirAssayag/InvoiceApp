@@ -12,14 +12,23 @@
             </div>
 
             <Buttons>
-              <v-btn elevation="0" color="#252945" rounded @click="editInvoice"
-                >Edit</v-btn
+              <v-btn
+                elevation="0"
+                color="#252945"
+                rounded
+                @click="editInvoice"
+                title="Edit"
+                aria-label="Edit"
               >
+                Edit
+              </v-btn>
               <v-btn
                 elevation="0"
                 color="#ec5757"
                 rounded
                 @click="dialog = true"
+                title="Delete"
+                aria-label="Delete"
                 >Delete</v-btn
               >
               <v-btn
@@ -28,6 +37,8 @@
                 color="purple_500"
                 rounded
                 @click="markAsPaid()"
+                title="Mark As Paid"
+                aria-label="Mark As Paid"
                 >Mark As Paid</v-btn
               >
             </Buttons>
@@ -132,10 +143,14 @@
                       <td>{{ item.name }}</td>
                       <td class="text-center">{{ item.quantity }}</td>
                       <td class="text-right">
-                        £ {{ getTwoDigits(item.price) }}
+                        <v-clamp autoresize :max-lines="1">
+                          £ {{ getTwoDigits(item.price) }}
+                        </v-clamp>
                       </td>
                       <td class="text-right">
-                        £ {{ getTwoDigits(item.total) }}
+                        <v-clamp autoresize :max-lines="1">
+                          £ {{ getTwoDigits(item.total) }}
+                        </v-clamp>
                       </td>
                     </tr>
                   </tbody>
@@ -146,8 +161,10 @@
             <div class="total_transaction_fee">
               <p id="grand_total">Grand Total</p>
               <h1>
-                £
-                {{ getTwoDigits(getGrandTotal(invoice.items)) }}
+                <v-clamp autoresize :max-lines="1">
+                  £
+                  {{ getTwoDigits(getGrandTotal(invoice.items)) }}
+                </v-clamp>
               </h1>
             </div>
           </section>
@@ -155,11 +172,23 @@
       </div>
 
       <Buttons class="buttons-mobile">
-        <v-btn elevation="0" color="#252945" rounded @click="editInvoice"
+        <v-btn
+          elevation="0"
+          color="#252945"
+          aria-label="Edit"
+          title="Edit"
+          rounded
+          @click="editInvoice"
           >Edit</v-btn
         >
 
-        <v-btn elevation="0" color="#ec5757" rounded @click="dialog = true"
+        <v-btn
+          elevation="0"
+          color="#ec5757"
+          aria-label="Delete"
+          title="Delete"
+          rounded
+          @click="dialog = true"
           >Delete</v-btn
         >
         <v-btn
@@ -168,6 +197,8 @@
           color="purple_500"
           rounded
           @click="markAsPaid()"
+          aria-label="Mark As Paid"
+          title="Mark As Paid"
           >Mark As Paid</v-btn
         >
       </Buttons>

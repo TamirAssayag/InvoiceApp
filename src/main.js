@@ -8,8 +8,10 @@ import "@/styles/app.scss";
 import Vuelidate from "vuelidate";
 import VueScrollTo from "vue-scrollto";
 import InlineSvg from "vue-inline-svg";
+import VClamp from "vue-clamp";
 
 Vue.component("inline-svg", InlineSvg);
+Vue.component("v-clamp", VClamp);
 
 Vue.use(Dayjs);
 Vue.use(Vuelidate);

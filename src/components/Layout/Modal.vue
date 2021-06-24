@@ -18,6 +18,8 @@
             color="#252945"
             rounded
             class="cancel"
+            title="Cancel"
+            aria-label="Cancel"
             @click="$emit('onClose')"
             >Cancel</v-btn
           >
@@ -26,6 +28,8 @@
             color="#ec5757"
             rounded
             @click="$emit('onAction')"
+            :title="action"
+            :aria-label="action"
             class="action"
             >{{ action }}</v-btn
           >

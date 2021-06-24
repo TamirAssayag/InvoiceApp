@@ -12,6 +12,8 @@
           text
           v-bind="attrs"
           @click="$emit('input')"
+          title="Close"
+          aria-label="Close"
         >
           X
         </v-btn>

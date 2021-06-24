@@ -13,6 +13,8 @@
           elevation="0"
           class="new_invoice"
           @click="$router.push({ name: 'sku-new' })"
+          aria-label="New Invoice"
+          title="New Invoice"
         >
           <li>
             {{
@@ -22,7 +24,10 @@
             }}
           </li>
           <li icon class="plus">
-            <inline-svg :src="getImageUrl('icon-plus.svg')"></inline-svg>
+            <inline-svg
+              :src="getImageUrl('icon-plus.svg')"
+              alt="plus"
+            ></inline-svg>
           </li>
         </v-btn>
       </div>

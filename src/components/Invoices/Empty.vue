@@ -3,6 +3,7 @@
     <img
       class="empty--illustration"
       :src="getImageUrl('illustration-empty.svg')"
+      alt="No Invoices"
     />
     <h3 class="empty--title">There is nothing here</h3>
     <p class="empty--text">

@@ -9,13 +9,14 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          class="filter-btn"
+          class="filter-btn no-background-hover"
           :ripple="false"
           color="transparent"
-          id="no-background-hover"
           elevation="0"
           v-bind="attrs"
           v-on="on"
+          title="Filter by status"
+          aria-label="Filter by status"
         >
           <v-icon icon id="arrow-down"> mdi-chevron-down </v-icon>
           {{

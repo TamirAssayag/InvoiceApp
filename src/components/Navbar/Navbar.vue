@@ -3,26 +3,35 @@
     <v-app-bar color="navbar" flat dark>
       <ul class="navbar--items">
         <div class="left" @click="getRoute('')">
-          <inline-svg class="logo" :src="getImageUrl('logo.svg')"></inline-svg>
+          <inline-svg
+            class="logo"
+            :src="getImageUrl('logo.svg')"
+            alt="Logo"
+          ></inline-svg>
         </div>
         <div class="right">
           <v-btn
-            id="no-background-hover"
             icon
             small
             dark
             @click="toggleDarkMode"
             color="transparent"
-            class="mode"
+            class="mode no-background-hover"
+            :title="toggleModeTitle"
+            :aria-label="toggleModeTitle"
           >
             <inline-svg
               :src="getImageUrl(toggleModeIcon)"
-              :title="toggleModeTitle"
+              :alt="toggleModeTitle"
               class="darkmode"
             />
           </v-btn>
           <div class="custom-divider"></div>
-          <img class="user_avatar" :src="getImageUrl('image-avatar.jpg')" />
+          <img
+            class="user_avatar"
+            alt="User"
+            :src="getImageUrl('image-avatar.jpg')"
+          />
         </div>
       </ul>
     </v-app-bar>
