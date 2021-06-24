@@ -34,16 +34,16 @@ new Vue({
       this.$vuetify.theme.dark = theme;
     } else if (
       window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
+      window.matchMedia("(prefers-color-scheme: light)").matches
     ) {
-      this.$vuetify.theme.dark = true;
-    } else {
       this.$vuetify.theme.dark = false;
+    } else {
+      this.$vuetify.theme.dark = true;
     }
     window
-      .matchMedia("(prefers-color-scheme: dark)")
+      .matchMedia("(prefers-color-scheme: light)")
       .addEventListener("change", (e) => {
-        this.$vuetify.theme.dark = e.matches ? true : false;
+        this.$vuetify.theme.dark = e.matches ? false : true;
       });
   },
 
