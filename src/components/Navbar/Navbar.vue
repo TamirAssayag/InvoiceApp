@@ -3,11 +3,7 @@
     <v-app-bar color="navbar" flat dark>
       <div class="navbar--items">
         <div class="left" @click="getRoute('')">
-          <inline-svg
-            class="logo"
-            :src="getImageUrl('logo.svg')"
-            alt="Logo"
-          ></inline-svg>
+          <inline-svg class="logo" :src="getImageUrl('logo.svg')"></inline-svg>
         </div>
         <div class="right">
           <v-btn
@@ -20,11 +16,7 @@
             :title="toggleModeTitle"
             :aria-label="toggleModeTitle"
           >
-            <inline-svg
-              :src="getImageUrl(toggleModeIcon)"
-              :alt="toggleModeTitle"
-              class="darkmode"
-            />
+            <inline-svg :src="getImageUrl(toggleModeIcon)" class="darkmode" />
           </v-btn>
           <div class="custom-divider"></div>
           <img

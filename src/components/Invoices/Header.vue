@@ -24,10 +24,7 @@
             }}
           </li>
           <li icon class="plus">
-            <inline-svg
-              :src="getImageUrl('icon-plus.svg')"
-              alt="plus"
-            ></inline-svg>
+            <inline-svg :src="getImageUrl('icon-plus.svg')"></inline-svg>
           </li>
         </v-btn>
       </div>
