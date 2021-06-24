@@ -16,16 +16,16 @@
           aria-label="New Invoice"
           title="New Invoice"
         >
-          <li>
+          <div>
             {{
               $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
                 ? "New"
                 : "New Invoice"
             }}
-          </li>
-          <li icon class="plus">
+          </div>
+          <div class="plus">
             <inline-svg :src="getImageUrl('icon-plus.svg')"></inline-svg>
-          </li>
+          </div>
         </v-btn>
       </div>
     </div>
@@ -88,7 +88,7 @@ export default {
 
   .theme--light & {
     .header_right {
-      li {
+      div {
         color: white;
       }
     }
@@ -135,7 +135,7 @@ export default {
   }
 
   .add {
-    li {
+    div {
       &:nth-of-type(1) {
         margin-left: 0.4rem;
       }

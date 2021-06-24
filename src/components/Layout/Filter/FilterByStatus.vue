@@ -18,7 +18,7 @@
           title="Filter by status"
           aria-label="Filter by status"
         >
-          <v-icon icon id="arrow-down"> mdi-chevron-down </v-icon>
+          <v-icon id="arrow-down"> mdi-chevron-down </v-icon>
           {{
             $vuetify.breakpoint.xs || $vuetify.breakpoint.sm
               ? "Filter"
