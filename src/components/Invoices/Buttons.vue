@@ -1,9 +1,9 @@
 <template>
   <div class="invoice--buttons__container">
     <div class="invoice--buttons__wrapper">
-      <ul class="invoice--buttons">
+      <div class="invoice--buttons">
         <slot></slot>
-      </ul>
+      </div>
     </div>
   </div>
 </template>

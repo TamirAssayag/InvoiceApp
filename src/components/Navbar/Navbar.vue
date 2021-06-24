@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <v-app-bar color="navbar" flat dark>
-      <ul class="navbar--items">
+      <div class="navbar--items">
         <div class="left" @click="getRoute('')">
           <inline-svg
             class="logo"
@@ -33,7 +33,7 @@
             :src="getImageUrl('image-avatar.jpg')"
           />
         </div>
-      </ul>
+      </div>
     </v-app-bar>
   </div>
 </template>

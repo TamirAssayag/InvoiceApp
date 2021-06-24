@@ -49,7 +49,8 @@
       letter-spacing: -0.25px;
       font-weight: bold;
 
-      ul {
+      .invoice_information__half,
+      .invoice_information {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -63,10 +64,10 @@
 
       .invoice_information {
         @include media(">=md") {
-          gap: 2.7rem;
+          gap: 3rem;
           text-align: center;
 
-          li {
+          div {
             text-align: left !important;
           }
         }
