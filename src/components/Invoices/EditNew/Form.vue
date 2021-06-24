@@ -29,7 +29,7 @@
             <div class="input--flex in-row">
               <div class="input--flex">
                 <div class="input-row">
-                  <label for="city">City</label>
+                  <label class="mb-1" for="city">City</label>
                   <v-text-field
                     dense
                     rounded
@@ -43,7 +43,7 @@
                   />
                 </div>
                 <div class="input-column">
-                  <label for="post-code">Post Code</label>
+                  <label class="mb-1" for="post-code">Post Code</label>
                   <v-text-field
                     :error-messages="postCodeError"
                     dense
@@ -59,7 +59,7 @@
               </div>
               <div class="input--flex">
                 <div class="input-column">
-                  <label for="country">Country</label>
+                  <label class="mb-1" for="country">Country</label>
                   <v-text-field
                     dense
                     rounded
@@ -120,7 +120,7 @@
               <div class="input--flex in-row">
                 <div class="input--flex">
                   <div class="input-row">
-                    <label for="city">City</label>
+                    <label class="mb-1" for="city">City</label>
                     <v-text-field
                       dense
                       rounded
@@ -134,7 +134,7 @@
                     />
                   </div>
                   <div class="input-column">
-                    <label for="post-code">Post Code</label>
+                    <label class="mb-1" for="post-code">Post Code</label>
                     <v-text-field
                       dense
                       rounded
@@ -150,7 +150,7 @@
                 </div>
                 <div class="input--flex">
                   <div class="input-column">
-                    <label for="country">Country</label>
+                    <label class="mb-1" for="country">Country</label>
                     <v-text-field
                       dense
                       rounded
@@ -278,7 +278,7 @@
 
               <div class="input--flex" style="width: 100%">
                 <div class="input-row">
-                  <label :for="`quantity-${index}`">Qty.</label>
+                  <label class="mb-1" :for="`quantity-${index}`">Qty.</label>
                   <v-text-field
                     :color="
                       $vuetify.theme.dark
@@ -306,7 +306,7 @@
                   />
                 </div>
                 <div class="input-column">
-                  <label :for="`item-price-${index}`">Price</label>
+                  <label class="mb-1" :for="`item-price-${index}`">Price</label>
                   <v-text-field
                     :color="
                       $vuetify.theme.dark
