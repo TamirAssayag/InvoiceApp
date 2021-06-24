@@ -10,7 +10,7 @@
     padding: 0 1.5rem;
     position: relative !important;
 
-    @include media(">md") {
+    @include media(">=md") {
       padding: 0 3.5rem;
       margin-top: 1.5rem;
       margin-bottom: 7rem !important;

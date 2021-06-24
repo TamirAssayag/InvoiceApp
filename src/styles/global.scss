@@ -73,7 +73,7 @@ select:-webkit-autofill:focus {
 
 .d-mobile {
   display: block;
-  @include media(">md") {
+  @include media(">=md") {
     display: none !important;
   }
 }

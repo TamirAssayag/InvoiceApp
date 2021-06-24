@@ -77,7 +77,7 @@ export default {
   margin: 1.5rem 0;
   padding: 0 1.5rem;
 
-  @include media(">md") {
+  @include media(">=md") {
     min-height: 196px;
     max-width: 730px;
     margin: 0 auto;
@@ -105,7 +105,7 @@ export default {
     letter-spacing: -0.63px;
     margin-top: -4px;
 
-    @include media(">md") {
+    @include media(">=md") {
       font-size: 2rem;
     }
   }
@@ -155,7 +155,7 @@ export default {
         background-color: $purple_400;
       }
 
-      @include media(">md") {
+      @include media(">=md") {
         padding: 0.5rem 0.93rem 0.5rem 0.5rem !important;
       }
     }

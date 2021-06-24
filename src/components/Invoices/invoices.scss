@@ -8,7 +8,7 @@
   gap: 1rem;
   margin: 1.1rem 0;
 
-  @include media(">md") {
+  @include media(">=md") {
     margin: auto;
     max-width: 730px;
   }
@@ -30,7 +30,7 @@
       border: solid 1px $purple-500;
     }
 
-    @include media(">md") {
+    @include media(">=md") {
       min-height: 72px;
       display: flex;
       align-items: center;
@@ -54,7 +54,7 @@
         display: flex;
         flex-direction: column;
 
-        @include media(">md") {
+        @include media(">=md") {
           flex-direction: row;
           align-items: center;
           justify-content: space-between;
@@ -62,7 +62,7 @@
       }
 
       .invoice_information {
-        @include media(">md") {
+        @include media(">=md") {
           gap: 2.7rem;
           text-align: center;
 
@@ -71,7 +71,7 @@
           }
         }
         &__half {
-          @include media(">md") {
+          @include media(">=md") {
             .v-btn {
               margin-left: 1rem;
             }
@@ -85,7 +85,7 @@
         color: $blue-gray;
         font-weight: normal;
 
-        @include media(">md") {
+        @include media(">=md") {
           margin: 0;
         }
       }
@@ -97,7 +97,7 @@
           color: $dark-blue-gray;
         }
 
-        @include media(">md") {
+        @include media(">=md") {
           margin: 0;
         }
       }
@@ -119,7 +119,7 @@
         line-height: 1.5;
         letter-spacing: -0.8px;
 
-        @include media(">md") {
+        @include media(">=md") {
           margin: 0 2rem 0;
         }
       }

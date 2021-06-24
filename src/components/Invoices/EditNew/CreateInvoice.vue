@@ -107,12 +107,12 @@ export default {
     }
 
     .invoice--buttons {
-      @include media(">md") {
+      @include media(">=md") {
         justify-content: flex-end;
       }
     }
     .invoice--buttons__wrapper {
-      @include media(">md") {
+      @include media(">=md") {
         padding: 0 3.5rem;
       }
     }
@@ -140,7 +140,7 @@ export default {
   width: 100% !important;
   border-radius: 0rem !important;
 
-  @include media(">lg") {
+  @include media(">=lg") {
     margin-left: 103px !important;
     z-index: 300;
   }

@@ -18,7 +18,7 @@ export default {
 @import "@/styles/colors.scss";
 
 .v-dialog--fullscreen {
-  @include media(">lg") {
+  @include media(">=lg") {
     .goback {
       display: none;
     }

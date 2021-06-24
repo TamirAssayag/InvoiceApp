@@ -30,7 +30,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  @include media(">md") {
+  @include media(">=md") {
     height: calc(100vh - 196px);
   }
 

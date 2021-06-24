@@ -43,7 +43,7 @@
     width: 70px !important;
     padding: 0 0.5rem !important;
 
-    @include media(">md") {
+    @include media(">=md") {
       width: 120px !important;
     }
 
