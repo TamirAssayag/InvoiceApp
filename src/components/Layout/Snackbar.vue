@@ -41,15 +41,17 @@ export default {
   }
   &__wrapper {
     width: 50%;
-    height: 80px;
+    height: 70px;
     color: white !important;
     background-color: #363b5c !important;
     box-shadow: none !important;
     border-radius: 1rem !important;
+    margin-bottom: 3rem !important;
 
     .theme--light & {
       color: #373b53 !important;
       background-color: white !important;
+      box-shadow: 0 5px 10px 2px rgba(21, 25, 58, 0.062) !important;
     }
   }
   &__content {

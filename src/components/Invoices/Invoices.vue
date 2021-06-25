@@ -27,6 +27,7 @@ export default {
 <style lang="scss">
 @import "@/styles/import";
 .invoices {
+  margin-bottom: 1.5rem;
   @include media(">=lg") {
     padding: 0 15rem;
     margin: 0 0 0 3.6rem;

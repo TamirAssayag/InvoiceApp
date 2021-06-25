@@ -2,6 +2,7 @@
 @import "./import";
 @import "./colors.scss";
 @import "./vuetify_overrides.scss";
+@import "./mixins.scss";
 
 input {
   background-color: $dark-300 !important;
@@ -40,7 +41,10 @@ input {
   overflow-y: hidden;
   overflow-x: hidden;
   max-height: 100vh;
-  padding-right: 4px;
+
+  @include media(">=md") {
+    padding-right: 4px;
+  }
 }
 
 input:-webkit-autofill,

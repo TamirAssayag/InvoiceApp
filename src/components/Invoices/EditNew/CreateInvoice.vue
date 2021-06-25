@@ -17,7 +17,7 @@
           }"
         >
           <div class="createInvoice">
-            <GoBackBtn class="goback-invoice" />
+            <GoBackBtn @onGoBack="goHome" class="goback-invoice" />
             <Form @onCancel="goHome" />
           </div>
         </v-dialog>
@@ -141,6 +141,8 @@ export default {
   border-radius: 0rem !important;
 
   @include media(">=lg") {
+    border-top-right-radius: 2rem !important;
+    border-bottom-right-radius: 2rem !important;
     margin-left: 103px !important;
     z-index: 300;
   }

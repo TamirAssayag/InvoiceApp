@@ -1,6 +1,6 @@
 <template>
   <div class="goback--wrapper">
-    <div class="goback--button" @click="$router.go(-1)">
+    <div class="goback--button" @click="$emit('onGoBack')">
       <v-icon color="purple_500">mdi-chevron-left</v-icon>
       <span>Go back</span>
     </div>

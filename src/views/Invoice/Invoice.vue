@@ -2,7 +2,7 @@
   <div class="invoice">
     <router-view />
     <template v-if="invoice">
-      <GoBackBtn class="goback--invoice" />
+      <GoBackBtn @onGoBack="$router.go(-1)" class="goback--invoice" />
       <div class="invoice--page" v-if="invoice">
         <div class="wrapper">
           <div class="status__card desktop card">

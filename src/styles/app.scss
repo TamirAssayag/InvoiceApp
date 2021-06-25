@@ -1,28 +1,17 @@
 @import "./global.scss";
 @import "./typography.scss";
+@import "./colors.scss";
 
 html,
-body,
+body {
+  @include scrollBar(4px, $purple-500, $purple-400, $blue-gray, #b6bad4);
+}
+
 .v-dialog {
-  &::-webkit-scrollbar {
-    width: 7px;
-  }
+  @include scrollBar(50px, $purple-500, $purple-400, $blue-gray, #b6bad4);
 
-  &::-webkit-scrollbar-thumb:vertical {
-    margin: 0;
-    background-color: #5d5f7a;
-    -webkit-border-radius: 1rem;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: #9092a5;
-    }
-  }
-
-  &::-webkit-scrollbar-button:start:decrement,
-  &::-webkit-scrollbar-button:end:increment {
-    height: 5px;
-    display: block;
+  @include media("<=md") {
+    @include scrollBar(10px, null, null, null, null);
   }
 }
 

@@ -1,0 +1,28 @@
+@mixin scrollBar($value, $color, $hover, $light-color, $light-hover) {
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: $color;
+    -webkit-border-radius: 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $hover;
+    }
+    .theme--light & {
+      background-color: $light-color;
+
+      &:hover {
+        background-color: $light-hover;
+      }
+    }
+  }
+
+  &::-webkit-scrollbar-button:start:decrement,
+  &::-webkit-scrollbar-button:end:increment {
+    height: $value;
+    display: block;
+  }
+}

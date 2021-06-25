@@ -17,12 +17,7 @@
     }
 
     @include media(">=lg") {
-      padding: 0 3.5rem;
-      margin-top: 1.5rem;
       margin-bottom: unset !important;
-    }
-
-    @include media(">=lg") {
       margin-top: 2.5rem;
     }
 
@@ -107,12 +102,15 @@
   }
 
   .input--flex {
-    margin-top: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 1.43rem;
     align-items: center;
+
+    @include media(">=md") {
+      margin-top: 0.3rem;
+    }
 
     .input-row,
     .input-column {
@@ -184,6 +182,7 @@
 
   @include media("<md") {
     flex-direction: column !important;
+    gap: 0rem !important;
     & > * {
       width: 100%;
     }
