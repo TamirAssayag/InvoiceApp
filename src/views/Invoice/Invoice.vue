@@ -258,11 +258,6 @@ export default {
       this.dialog = false;
     },
   },
-  computed: {
-    editMode() {
-      return this.$route.name === "sku-edit";
-    },
-  },
 };
 </script>
 

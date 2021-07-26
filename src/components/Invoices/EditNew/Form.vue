@@ -503,9 +503,6 @@ export default {
     saveMode() {
       return this.$route.name === "sku-new";
     },
-    ...mapGetters({
-      invoices: "invoices/getInvoices",
-    }),
   },
 
   methods: {
